@@ -13,7 +13,16 @@ def true_mean(l1, l2, l3, l12, price, month, lib=np):
             - 18 * lib.log(price / 10) + 0.002 * (l1 - l12) * (l1 - roll) + 5)
 
 
-def make_series(n_series=40, T=96, seed=0, level_shift_after=None, shift=1.0, base_range=(40, 120)):
+def true_mean_misspec(l1, l2, l3, l12, price, month, lib=np):
+    """Truth OUTSIDE the deg-2 polynomial library: saturating demand, price ratio, product of seasonal and exp."""
+    roll = (l1 + l2 + l3) / 3
+    seas = 1 + 0.25 * lib.sin(2 * lib.pi * month / 12)
+    return (0.5 * l1 / (1 + lib.abs(l1) / 300) + 0.25 * l12 * seas + 0.15 * roll
+            - 25 * lib.log(price / 10) + 8 * lib.sqrt(lib.abs(l2 - l3) + 1) * lib.sin(price / 3) + 5)
+
+
+def make_series(n_series=40, T=96, seed=0, level_shift_after=None, shift=1.0, base_range=(40, 120), fn=None, noise=2.0):
+    fn = fn or true_mean
     rng = np.random.default_rng(seed)
     rows = []
     for s in range(n_series):
@@ -24,8 +33,8 @@ def make_series(n_series=40, T=96, seed=0, level_shift_after=None, shift=1.0, ba
             month = (t % 12) + 1
             price_t = price * (1 + 0.15 * np.sin(t / 7 + s)) * (1 + rng.normal(0, 0.02))
             l1, l2, l3, l12 = y[t - 1], y[t - 2], y[t - 3], y[t - 12]
-            mu = true_mean(l1, l2, l3, l12, price_t, month)
-            yt = mu + rng.normal(0, 2.0)
+            mu = fn(l1, l2, l3, l12, price_t, month)
+            yt = mu + rng.normal(0, noise)
             if level_shift_after is not None and t >= level_shift_after:
                 yt = yt * shift  # exogenous regime shift -> forces extrapolation
             y.append(yt)
@@ -52,3 +61,29 @@ def feature_exprs():
 
 def make_pipeline():
     return SymbolicPipeline(RAW, feature_exprs())
+
+
+# ---------- real univariate series: raw = lag window + calendar month ----------
+RAW_REAL = ["l1", "l2", "l3", "l6", "l12", "month"]
+
+
+def real_feature_exprs():
+    lg = lambda x, L: L.log(1 + x)
+    return {
+        "lg1": lambda e, L: lg(e["l1"], L), "lg2": lambda e, L: lg(e["l2"], L), "lg3": lambda e, L: lg(e["l3"], L),
+        "lg6": lambda e, L: lg(e["l6"], L), "lg12": lambda e, L: lg(e["l12"], L),
+        "lgroll3": lambda e, L: lg((e["l1"] + e["l2"] + e["l3"]) / 3, L),
+        "sin_m": lambda e, L: L.sin(2 * L.pi * e["month"] / 12), "cos_m": lambda e, L: L.cos(2 * L.pi * e["month"] / 12),
+        "sin2_m": lambda e, L: L.sin(4 * L.pi * e["month"] / 12), "cos2_m": lambda e, L: L.cos(4 * L.pi * e["month"] / 12),
+    }
+
+
+def make_real_pipeline():
+    return SymbolicPipeline(RAW_REAL, real_feature_exprs())
+
+
+def window_xy(y, months):
+    """Rows for t>=12: raw=[y[t-1],y[t-2],y[t-3],y[t-6],y[t-12],month[t]], target y[t]."""
+    y = np.asarray(y, float); idx = np.arange(12, len(y))
+    X = np.column_stack([y[idx - 1], y[idx - 2], y[idx - 3], y[idx - 6], y[idx - 12], months[idx]])
+    return idx, X, y[idx]

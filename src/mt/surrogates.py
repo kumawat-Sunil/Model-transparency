@@ -67,3 +67,48 @@ def tree_node_count(model, kind):
         df = model.booster_.trees_to_dataframe()
         return int(len(df))
     raise ValueError
+
+
+# ---- A2: repaired sparse engine: lasso path -> ridge refit on support -> pick support size by validation ----
+from sklearn.linear_model import Ridge, lasso_path
+
+def _prune_collinear(A, tol=0.995):
+    keep = []
+    C = np.corrcoef(A.T)
+    for j in range(A.shape[1]):
+        if all(abs(C[j, i]) < tol for i in keep): keep.append(j)
+    return keep
+
+
+def sparse_select(Z, y, Zv, yv, deg2=True, n_alphas=25, ridge=1e-3, rule="min", return_path=False):
+    """Return (expr, n_terms) where support chosen on validation RMSE against yv (the labels, for fairness across methods)."""
+    terms = library(Z, deg2)
+    A = np.column_stack([t[1] for t in terms]); Av = np.column_stack([library(Zv, deg2)[i][1] for i in range(len(terms))])
+    kp = _prune_collinear(A); A, Av = A[:, kp], Av[:, kp]; terms = [terms[i] for i in kp]
+    mu, sc = A.mean(0), A.std(0) + 1e-12
+    As, Avs = (A - mu) / sc, (Av - mu) / sc
+    alphas, coefs, _ = lasso_path(As, y - y.mean(), n_alphas=n_alphas, eps=1e-4)
+    best = None; seen = set(); path = []
+    for j in range(coefs.shape[1]):
+        sup = tuple(np.flatnonzero(np.abs(coefs[:, j]) > 1e-10))
+        if not sup or sup in seen: continue
+        seen.add(sup)
+        m = Ridge(alpha=ridge).fit(As[:, sup], y)
+        res = m.predict(Avs[:, sup]) - yv
+        e = float(np.sqrt(np.mean(res ** 2))); se = float(np.std(res ** 2) / np.sqrt(len(res)) / (2 * e + 1e-12))
+        path.append((len(sup), e, se, sup, m))
+        if best is None or e < best[0] - 1e-9: best = (e, sup, m)
+    e, sup, m = best
+    if rule == "1se":  # smallest support within one standard error of the best validation RMSE
+        thr = e + max(p[2] for p in path if p[3] == sup)
+        ok = [p for p in path if p[1] <= thr]; _, e, _, sup, m = min(ok, key=lambda p: p[0])
+    expr = sp.Float(float(m.intercept_ - np.sum(m.coef_ * mu[list(sup)] / sc[list(sup)])), 8)
+    for c, i in zip(m.coef_, sup):
+        expr += sp.Float(float(c / sc[i]), 8) * terms[i][0]
+    if return_path:
+        def build(sup_, m_):
+            ex = sp.Float(float(m_.intercept_ - np.sum(m_.coef_ * mu[list(sup_)] / sc[list(sup_)])), 8)
+            for c, i in zip(m_.coef_, sup_): ex += sp.Float(float(c / sc[i]), 8) * terms[i][0]
+            return ex
+        return expr, len(sup), [(n, e_, build(s_, m_)) for n, e_, _, s_, m_ in path]
+    return expr, len(sup)
