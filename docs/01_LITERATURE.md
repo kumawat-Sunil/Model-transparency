@@ -22,3 +22,9 @@
 2. Joint complexity metric over T and g.
 3. Temporal-extrapolation behavior of distilled symbolic forecasters (trees cannot extrapolate; equations can — hypothesis H1).
 4. Sources to read in full: Follow the Forest Trail, SymTorch, SRLinear, m2cgen docs.
+
+## Round 2 (2026-10-01, snippets only; verify)
+- Tree-model extrapolation failure is textbook knowledge (leaf averages cannot exceed training range; Snowflake blog "Comparing transform techniques for tree-based models", SETAR-Tree arXiv 2211.08661, many practitioner posts). => our F3/F14 "symbolic extrapolates, trees don't" is an expected effect, NOT a discovery; value is only in quantifying it within a distillation+fusion pipeline.
+- Feynman SR benchmarks: AI Feynman 2.0, "Rethinking SR datasets and benchmarks" (2206.10540), PhySO, ParFam, MOSAIC-SR (2609.20997), neural-guided equation discovery (2503.16953); "Interpretability in SR: benchmark of explanatory methods on Feynman" (2404.05908). Standard practice: AI-Feynman uses NN as a teacher to discover separability/symmetries; log-transform to find power laws is classical (Kepler-style).
+- No source found specifically on "input standardization hurts SR"; E08/E08b test it empirically.
+- Symbolic ML for chaotic time series (2603.07261).

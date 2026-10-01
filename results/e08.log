@@ -1,0 +1,44 @@
+newton_grav done
+kinetic done
+ideal_gas done
+pendulum done
+lens done
+relativistic done
+gauss done
+damped_osc done
+snell_ratio done
+                                  nodes  in_r2  ex_r2
+law          method                                  
+damped_osc   gp[labels]            13.5  0.718  0.174
+             gp[teacher_queries]   12.5  0.759 -0.497
+             mlp_teacher            NaN  0.981  0.305
+gauss        gp[labels]             1.0 -0.093 -0.162
+             gp[teacher_queries]    1.0 -0.023 -0.550
+             mlp_teacher            NaN  0.668  0.307
+ideal_gas    gp[labels]            10.0  0.695  0.551
+             gp[teacher_queries]   15.0  0.748  0.635
+             mlp_teacher            NaN  0.757  0.624
+kinetic      gp[labels]            27.5  0.985  0.961
+             gp[teacher_queries]   20.0  0.844  0.790
+             mlp_teacher            NaN  0.823  0.589
+lens         gp[labels]             6.5  0.772  0.737
+             gp[teacher_queries]    7.0  0.771  0.801
+             mlp_teacher            NaN  0.854  0.856
+newton_grav  gp[labels]            16.0  0.534  0.230
+             gp[teacher_queries]   18.0  0.557  0.311
+             mlp_teacher            NaN  0.579  0.407
+pendulum     gp[labels]            25.5  0.915  0.881
+             gp[teacher_queries]   20.5  0.866  0.785
+             mlp_teacher            NaN  0.860  0.773
+relativistic gp[labels]            11.5  0.968  0.511
+             gp[teacher_queries]    9.0  0.880  0.557
+             mlp_teacher            NaN  0.934  0.543
+snell_ratio  gp[labels]             8.5  0.597  0.168
+             gp[teacher_queries]    7.0  0.609  0.180
+             mlp_teacher            NaN  0.894  0.845
+                     in_r2         ex_r2       
+                      mean median   mean median
+method                                         
+gp[labels]           0.677  0.721  0.450  0.500
+gp[teacher_queries]  0.668  0.757  0.335  0.515
+mlp_teacher          0.817  0.849  0.583  0.589

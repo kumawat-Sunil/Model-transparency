@@ -1,0 +1,52 @@
+newton_grav done
+kinetic done
+ideal_gas done
+pendulum done
+lens done
+relativistic done
+gauss done
+damped_osc done
+snell_ratio done
+                                      nodes  in_r2         ex_r2
+law          method                                             
+damped_osc   gp-raw[labels]            12.0  0.888  8.380000e-01
+             gp-raw[teacher_queries]    9.5  0.885  8.340000e-01
+gauss        gp-log[labels]             5.0  0.521  6.400000e-02
+             gp-log[teacher_queries]    7.0  0.561  2.330000e-01
+             gp-raw[labels]             5.0  0.550  7.700000e-02
+             gp-raw[teacher_queries]    6.0  0.656  3.140000e-01
+ideal_gas    gp-log[labels]             6.0  1.000  1.000000e+00
+             gp-log[teacher_queries]    9.5  0.935  9.220000e-01
+             gp-raw[labels]             6.0  1.000  1.000000e+00
+             gp-raw[teacher_queries]   35.0  0.770  6.560000e-01
+kinetic      gp-log[labels]             6.0  0.950  5.600000e-02
+             gp-log[teacher_queries]    8.5  0.955  9.460000e-01
+             gp-raw[labels]            30.0  0.998  9.670000e-01
+             gp-raw[teacher_queries]   39.5  0.869  9.200000e-01
+lens         gp-log[labels]             8.0  0.890  6.260000e-01
+             gp-log[teacher_queries]    5.0  0.856  5.460000e-01
+             gp-raw[labels]            10.5  0.986  9.830000e-01
+             gp-raw[teacher_queries]   12.0  0.925  9.460000e-01
+newton_grav  gp-log[labels]             6.0  1.000  1.000000e+00
+             gp-log[teacher_queries]   18.5  0.529  3.260000e-01
+             gp-raw[labels]             6.0  1.000  1.000000e+00
+             gp-raw[teacher_queries]   53.5  0.583  3.980000e-01
+pendulum     gp-log[labels]             8.0  0.995  9.910000e-01
+             gp-log[teacher_queries]   21.5  0.835  7.660000e-01
+             gp-raw[labels]            19.5  0.987  9.450000e-01
+             gp-raw[teacher_queries]   27.5  0.862  4.390000e-01
+relativistic gp-log[labels]            15.5  0.997 -1.936324e+39
+             gp-log[teacher_queries]   10.5  0.960 -1.214565e+15
+             gp-raw[labels]             6.5  0.989  7.320000e-01
+             gp-raw[teacher_queries]   19.0  0.940  6.740000e-01
+snell_ratio  gp-log[labels]             6.5  0.982  8.600000e-01
+             gp-log[teacher_queries]   28.0  0.769  2.350000e-01
+             gp-raw[labels]            11.0  0.951  8.070000e-01
+             gp-raw[teacher_queries]   12.0  0.918  7.630000e-01
+                         in_r2                ex_r2       
+                          mean median          mean median
+method                                                    
+gp-log[labels]           0.917  0.989 -2.420405e+38  0.860
+gp-log[teacher_queries]  0.800  0.868 -1.518206e+14  0.613
+gp-raw[labels]           0.928  0.996  8.170000e-01  0.967
+gp-raw[teacher_queries]  0.823  0.869  6.600000e-01  0.679
