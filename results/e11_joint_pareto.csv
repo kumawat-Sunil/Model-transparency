@@ -1,0 +1,8 @@
+series,best_method,best_smape,best_nodes,within10pct_method,within10pct_smape,within10pct_nodes,pareto_methods
+airline,sym[labels]/nofourier,4.857606348445293,26.0,sym[labels]/nofourier,4.857606348445293,26.0,sym[labels]/nofourier
+carsales,sym[distill]/full,8.691242975322043,107.0,sym[labels]/nolog,9.366393041691223,15.0,sym[distill]/full;sym[labels]/nolog;sym[labels]/nofourier
+co2,sym[labels]/full,0.0820330945073073,130.0,sym[labels]/full,0.0820330945073073,130.0,sym[labels]/full;sym[labels]/nofourier
+meantemp,sym[labels]/nofourier,3.606533365439725,212.0,sym[labels]/nofourier,3.606533365439725,212.0,sym[distill]/full;sym[labels]/nolog;sym[labels]/nofourier
+robberies,sym[labels]/nolog,10.588200682793062,34.0,sym[labels]/nolog,10.588200682793062,34.0,sym[labels]/nolog
+sunspots,sym[labels]/nolog,38.25130568762796,11.0,sym[labels]/nolog,38.25130568762796,11.0,sym[labels]/nolog
+writingpaper,sym[labels]/nofourier,19.02137238333609,22.0,sym[labels]/nofourier,19.02137238333609,22.0,sym[labels]/nofourier
