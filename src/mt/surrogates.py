@@ -39,7 +39,11 @@ def sparse_path(Z, y, alphas, deg2=True):
 
 
 # ---- B: genetic-programming SR (gplearn) ----
+_EXP = make_function(function=lambda x: np.exp(np.clip(x, -30, 30)), name="exp", arity=1)
+
+
 def gp_fit(Z, y, parsimony, seed=0, pop=1500, gens=25, funcs=("add", "sub", "mul", "div", "log", "sqrt", "sin", "cos")):
+    funcs = [(_EXP if f == "exp" else f) for f in funcs]
     sr = SymbolicRegressor(population_size=pop, generations=gens, function_set=funcs, parsimony_coefficient=parsimony,
                            p_crossover=0.7, p_subtree_mutation=0.1, p_hoist_mutation=0.05, p_point_mutation=0.1,
                            max_samples=0.9, const_range=(-5, 5), init_depth=(2, 5), random_state=seed, n_jobs=4, verbose=0)
@@ -54,7 +58,7 @@ def gp_to_sympy(sr, k):
     loc.update({"add": lambda a, b: a + b, "sub": lambda a, b: a - b, "mul": lambda a, b: a * b,
                 "div": lambda a, b: a / b if b != 0 else sp.Integer(1),
                 "sqrt": lambda a: sp.sqrt(sp.Abs(a)), "log": lambda a: sp.log(sp.Abs(a)),
-                "sin": sp.sin, "cos": sp.cos, "neg": lambda a: -a, "abs": sp.Abs})
+                "exp": sp.exp, "sin": sp.sin, "cos": sp.cos, "neg": lambda a: -a, "abs": sp.Abs})
     return sp.sympify(s, locals=loc), s
 
 

@@ -28,3 +28,9 @@
 - Feynman SR benchmarks: AI Feynman 2.0, "Rethinking SR datasets and benchmarks" (2206.10540), PhySO, ParFam, MOSAIC-SR (2609.20997), neural-guided equation discovery (2503.16953); "Interpretability in SR: benchmark of explanatory methods on Feynman" (2404.05908). Standard practice: AI-Feynman uses NN as a teacher to discover separability/symmetries; log-transform to find power laws is classical (Kepler-style).
 - No source found specifically on "input standardization hurts SR"; E08/E08b test it empirically.
 - Symbolic ML for chaotic time series (2603.07261).
+
+## Round 3 (2026-10-01, snippets only; verify)
+- Searches for "symbolic distillation + preprocessing fused into one raw-input closed form with equivalence check" returned only Stage-1 frameworks: SymTorch (2602.21307; wraps NN components, PySR), KAN-SR (2509.10089), SMILE (2609.04639; prune -> parametric opt -> coefficient rounding), Recovery-directed distillation (2609.32409), Neural Symbolic Regression w/ sparse modeling (2609.01102), "NN as functional preconditioner" (neural smoothing + sparse regression). **No hit for fused T+g verification or a joint T+g complexity objective** (absence in snippets, not proof).
+- AI Feynman (Udrescu & Tegmark, Sci. Adv.): NN used as smooth oracle to detect separability/symmetry; teacher-as-oracle is established (consistent with F37).
+- SR-community awareness that normalization can corrupt symbolic form (MOSAIC-SR 2609.20997; pretrained SR works that omit affine skeleton transforms): our F34 (z-scoring hurts) is an instance of a known concern; the novel part would be the explicit T_teacher / T_search split plus automatic representation selection (E10).
+- SRBench / SRBench++ (252 problems incl. Feynman) is the right standard benchmark to run before any paper claim.

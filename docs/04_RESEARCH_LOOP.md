@@ -21,3 +21,7 @@ H1 supported (synthetic+real); H2 rejected for forecasting (F10,F31); H3 confirm
 H5 resolved as a taxonomy: algebraic (scale, log, PCA, poly) / piecewise (impute, one-hot) / tables (quantile) with node-cost numbers (F29); H6 refuted for naive augmentation (F11,F16);
 H7 (complexity growth = misspecification symptom) weakly supported (F13); H8 Pareto knee at 3-5 terms mostly holds but depends on library (F18,F32).
 New: H9: teacher queries help only for small/noisy labels with abundant on-manifold queries (-> E08). H10: library prior (log, Fourier) is the real source of performance; auto-discovery of T (SR for features) is the open step.
+
+## Round 6-7 (E08-E10)
+H9 refined: distillation quality = teacher quality; teacher-queries don't beat labels with a weak teacher (F35, F38). H11 (T_teacher != T_search) supported on 19 laws across 3 experiments (F34,F39,F41); automatic selection by validation fidelity gives robustness (F42).
+Next (priority): (1) SRBench/Feynman-100 style standard-benchmark run for credibility; (2) joint T+g objective optimiser (E11); (3) extrapolation guardrails/domain certificate (E13); (4) high-dim/image scaling (E12); (5) stronger SR engine / multi-seed CIs; (6) fold representation selection into the forecasting pipeline (lags: raw vs log) and re-run E07.

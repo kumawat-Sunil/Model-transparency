@@ -71,3 +71,11 @@ F37. **When the teacher is accurate, symbolic distillation opens the box**: medi
 F38. **Refines H9/F35**: distillation quality = teacher quality. With a poor teacher (200 noisy points) teacher-queries hurt (F35); with an accurate one they match/exceed it. Distillation is a *transparency* tool, not an accuracy tool.
 F39. **Representation choice is decisive and law-dependent**: raw best for 7/9 laws, log best for snell_ratio (ratio of sines) and tied on power laws; z-space (the teacher's own T) is worst (0.55 extrapolation). Log fails on non-power laws (relativistic ex 0.41). => automatic search over representations {raw, log, z} per task + validation selection is needed (H11 operational form).
 F40. Failure cases persist: gauss and damped_osc not exactly recovered (function set), relativistic extrapolation 0.59 (singularity near v=c beyond sampled range — nothing can extrapolate a pole). 
+
+## E10 (results/e10) — automatic search-representation selection (z / raw / log) on 10 NEW laws (incl. exp), MLP teacher n=3000, GP on 5000 teacher queries
+Selection score = R2 vs teacher on a 1.3x validation box - 0.002*nodes (no truth used).
+F41. Median (10 laws) in-range / extrapolation R2 vs truth: z 0.943 / **-2.13**; log 0.957 / 0.629; raw 0.987 / 0.917; **selected 0.983 / 0.926**; oracle-best 0.986 / 0.946. 
+F42. **Robustness is the main benefit**: worst-case extrapolation R2: selected 0.137, whereas fixed raw -37.3 (thin_film), fixed log -398 (logistic), fixed z -462 (coulomb). Raw alone has a good median but fails catastrophically on some laws; validation-based selection avoids the catastrophes. Selected == oracle on 5/10 laws; ties on 2 more (coulomb/wave_speed: raw=log=1.0); misses: thin_film (picked z 0.14 vs log 0.54), drag (0.91 vs 0.97), heat (0.72 vs 0.79).
+F43. Exp primitive helped: rc_decay/planck/logistic recovered to R2 0.85-0.94 extrapolated in raw space (earlier function sets could not express them); still imperfect (GP noisy, single seed).
+F44. z-space is the WORST representation for symbolic discovery, repeatedly (F34, F39, F41): confirms T_teacher != T_search (H11 supported, 3 experiments, 19 laws).
+Caveat: single seed, one GP engine (gplearn), teacher-fidelity validation box only 1.3x; thin_film failure shows selector can be fooled by a validation box too close to the training range.

@@ -37,14 +37,14 @@ Pipeline: raw → T (sympy-representable) → teacher → query set (train + per
 ## 5. Phases
 | Phase | Content | Status |
 |---|---|---|
-| P0 | Literature scan, plan, repo skeleton | in progress |
-| P1 | Symbolic transform layer + exact compile test (preprocessing only) | |
-| P2 | Synthetic forecasting benchmark with known ground truth; teachers | |
-| P3 | Surrogates: sparse-library, gplearn SR, tree→Piecewise, SR-on-labels control | |
-| P4 | Fusion F(x_raw)=g(T(x)) and verification; temporal + extrapolation eval | |
-| P5 | Ablations: query-set augmentation, complexity penalty, teacher type | |
-| P6 | Real data (public datasets reachable from sandbox), neural-net teacher (MLP) | |
-| P7 | Deeper lit search, write-up | |
+| P0 | Literature scan, plan, repo skeleton | done (rounds 1-3) |
+| P1 | Symbolic transform layer + exact compile test (preprocessing only) | done (E01,E05,E06b) |
+| P2 | Synthetic forecasting benchmark with known ground truth; teachers | done (E01,E02) |
+| P3 | Surrogates: sparse-library, gplearn SR, tree→Piecewise, SR-on-labels control | done (E01-E04,E08-E10) |
+| P4 | Fusion F(x_raw)=g(T(x)) and verification; temporal + extrapolation eval | done (E01,E03,E05,E07) |
+| P5 | Ablations: query-set augmentation, complexity penalty, teacher type | done (E02,E04,E07,E08) |
+| P6 | Real data, neural-net teacher (MLP) | partly done (E03-E07 real series; E05 tabular; images/high-dim pending) |
+| P7 | Deeper lit search, write-up | lit rounds 2-3 done; write-up pending; SRBench run pending |
 
 ## 6. Experiment conventions
 - Each experiment = `experiments/eNN_name.py`, writes `results/eNN_*/{metrics.json,*.csv,*.png,log.txt}`.

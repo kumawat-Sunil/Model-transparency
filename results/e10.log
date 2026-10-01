@@ -1,0 +1,68 @@
+coulomb sel log oracle raw
+wave_speed sel log oracle raw
+doppler sel log oracle log
+rc_decay sel raw oracle raw
+planck sel raw oracle raw
+logistic sel raw oracle raw
+thin_film sel z oracle log
+drag sel raw oracle log
+heat sel log oracle raw
+range sel raw oracle raw
+           law           rep  nodes  in_r2    ex_r2  val_fid
+0      coulomb             z     52  0.926 -462.543   -0.244
+1      coulomb           raw      6  1.000    1.000    0.983
+2      coulomb           log      6  1.000    1.000    0.983
+3      coulomb  SELECTED:log      6  1.000    1.000    0.983
+4      coulomb    ORACLE:raw      6  1.000    1.000    0.983
+5   wave_speed             z     14  0.947    0.064    0.845
+6   wave_speed           raw      8  1.000    1.000    0.996
+7   wave_speed           log      7  1.000    1.000    0.995
+8   wave_speed  SELECTED:log      7  1.000    1.000    0.995
+9   wave_speed    ORACLE:raw      8  1.000    1.000    0.996
+10     doppler             z      3  0.933    0.851    0.855
+11     doppler           raw     27  0.984    0.922    0.932
+12     doppler           log     15  0.976    0.951    0.960
+13     doppler  SELECTED:log     15  0.976    0.951    0.960
+14     doppler    ORACLE:log     15  0.976    0.951    0.960
+15    rc_decay             z     27  0.737   -0.547    0.557
+16    rc_decay           raw     24  0.921    0.864    0.921
+17    rc_decay           log     18  0.939    0.479    0.792
+18    rc_decay  SELECTED:raw     24  0.921    0.864    0.921
+19    rc_decay    ORACLE:raw     24  0.921    0.864    0.921
+20      planck             z     36  0.978   -6.037    0.189
+21      planck           raw     21  0.991    0.940    0.968
+22      planck           log     13  0.979   -0.220    0.391
+23      planck  SELECTED:raw     21  0.991    0.940    0.968
+24      planck    ORACLE:raw     21  0.991    0.940    0.968
+25    logistic             z     36  0.939   -3.705    0.580
+26    logistic           raw     15  0.931    0.848    0.927
+27    logistic           log     11  0.778 -398.374   -3.262
+28    logistic  SELECTED:raw     15  0.931    0.848    0.927
+29    logistic    ORACLE:raw     15  0.931    0.848    0.927
+30   thin_film             z     52  0.910    0.137    0.896
+31   thin_film           raw     38  0.974  -37.344   -0.311
+32   thin_film           log     16  0.905    0.535    0.816
+33   thin_film    SELECTED:z     52  0.910    0.137    0.896
+34   thin_film    ORACLE:log     16  0.905    0.535    0.816
+35        drag             z     67  0.988   -4.841    0.173
+36        drag           raw     23  0.990    0.912    0.865
+37        drag           log     21  0.991    0.974    0.732
+38        drag  SELECTED:raw     23  0.990    0.912    0.865
+39        drag    ORACLE:log     21  0.991    0.974    0.732
+40        heat             z     29  0.950    0.119    0.836
+41        heat           raw     97  0.982    0.789    0.853
+42        heat           log      9  0.887    0.723    0.878
+43        heat  SELECTED:log      9  0.887    0.723    0.878
+44        heat    ORACLE:raw     97  0.982    0.789    0.853
+45       range             z     39  0.950   -3.707    0.372
+46       range           raw     11  1.000    1.000    0.878
+47       range           log     22  0.808   -0.709    0.660
+48       range  SELECTED:raw     11  1.000    1.000    0.878
+49       range    ORACLE:raw     11  1.000    1.000    0.878
+          in_r2  ex_r2  nodes
+kind                         
+ORACLE    0.986  0.946   15.5
+SELECTED  0.983  0.926   15.0
+log       0.957  0.629   14.0
+raw       0.987  0.917   22.0
+z         0.943 -2.126   36.0

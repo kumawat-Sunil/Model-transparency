@@ -12,6 +12,8 @@ Can a trained black box (GBM / MLP) plus its preprocessing be turned into ONE ex
 6. **Engines have complementary blind spots**: sparse-poly fails on moons/sin-abs, GP on high-dim/nonpolynomial; library mis-specification shows as node growth (F13, F28).
 7. **Honest limits**: classical ETS stays competitive in forecasting (E07 correction); logistic regression equals black boxes on easy tabular tasks (F24, F25); sparse selection under non-stationarity is unreliable (F18, F32); tail risk of polynomial extrapolation (F12).
 
+5b. **Automatic representation selection** (E10, F41-F42): choosing raw/log/z for the symbolic search by validation fidelity avoids catastrophic extrapolation failures (worst-case R2 0.14 vs -37..-462 for fixed choices) while matching the oracle median (0.926 vs 0.946).
+
 ## Candidate contributions (to test further)
 - C1: Compilation-aware pipeline: joint cost over (error, fidelity, nodes(g), nodes(T)), with T_search chosen separately from T_teacher.
 - C2: Verified end-to-end fusion with exactness certificate (max error on held-out raw rows) + guardrails (domain box, clipping).
