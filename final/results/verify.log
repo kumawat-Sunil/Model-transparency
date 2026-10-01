@@ -1,0 +1,80 @@
+## physical_law / gravity  [t06]
+preprocessing: {'m1': 'm1', 'm2': 'm2', 'r': 'r'}
+y = m1*m2/r**2
+{'type': 'physical_law', 'dataset': 'gravity', 'method': 't06', 'metric': 'R2', 'model_score': 0.9966, 'formula_score': 1.0, 'fidelity_R2': 0.9966, 'nodes': 6, 'in_domain_test': 0.993, 'export_max_diff': 0.0, 'secs': 40.4, 'extrapolation_R2': 1.0}
+
+## physical_law / pendulum  [t06]
+preprocessing: {'L': 'L', 'g': 'g'}
+y = 6.5*L**0.47369/g**0.50153
+{'type': 'physical_law', 'dataset': 'pendulum', 'method': 't06', 'metric': 'R2', 'model_score': 0.9958, 'formula_score': 0.9989, 'fidelity_R2': 0.9951, 'nodes': 8, 'in_domain_test': 0.997, 'export_max_diff': 0.0, 'secs': 60.0, 'extrapolation_R2': 0.9987}
+
+## physical_law / lens  [t06]
+preprocessing: {'u': 'u', 'v': 'v'}
+y = 0.5*u**0.41401*v**0.41547*exp(0.1192*log(u)*log(v))
+{'type': 'physical_law', 'dataset': 'lens', 'method': 't06', 'metric': 'R2', 'model_score': 0.9956, 'formula_score': 0.9907, 'fidelity_R2': 0.9925, 'nodes': 15, 'in_domain_test': 0.999, 'export_max_diff': 0.0, 'secs': 64.3, 'extrapolation_R2': 0.9641}
+
+## physical_law / rc_decay  [t06]
+preprocessing: {'V0': 'V0', 't': 't', 'R': 'R'}
+y = -0.34172*V0*log(sin(0.352*t/R))
+{'type': 'physical_law', 'dataset': 'rc_decay', 'method': 't06', 'metric': 'R2', 'model_score': 0.995, 'formula_score': 0.9973, 'fidelity_R2': 0.9924, 'nodes': 11, 'in_domain_test': 0.99, 'export_max_diff': 0.0, 'secs': 39.7, 'extrapolation_R2': 0.9938}
+
+## tabular_regression / diabetes  [t08_additive]
+preprocessing: {'age': 'age', 'sex': 'sex', 'bmi': 'bmi', 'bp': 'bp', 's1': 's1', 's2': 's2', 's3': 's3', 's4': 's4', 's5': 's5', 's6': 's6'}
+y = -0.0030346*s3**2 + 4.4612*s4 + 1.002e-7*s6**4 - 18.552*sex + 2817.4*exp(-0.000358*s1)**0.25 - 382.39*exp(20.42*(1.881 - 1.129*s5)**2/s5**4) - 3861.3*log(log(0.6742*bmi))**0.5 + 4088.4*log(log(6.219*bmi)) - 51046.0 + 49828.0*exp(-0.07427*exp(-0.000358*bp))
+{'type': 'tabular_regression', 'dataset': 'diabetes', 'method': 't08_additive', 'metric': 'R2', 'model_score': 0.431, 'formula_score': 0.4438, 'fidelity_R2': 0.9608, 'nodes': 66, 'in_domain_test': 0.972, 'export_max_diff': 0.0, 'secs': 267.0}
+
+## tabular_regression / boston  [t08_additive]
+preprocessing: {'log_crim': 'log(crim + 1)', 'rm': 'rm', 'age': 'age', 'log_dis': 'log(dis)', 'tax': 'tax', 'ptratio': 'ptratio', 'log_lstat': 'log(lstat)', 'nox': 'nox'}
+y = -0.054878*age - 6.2866*nox**2 - 0.40067*nox*rm*log(lstat)*log(crim + 1) - 0.010977*rm**4*log(0.08014*rm) - 5.6044*log(dis) - 5.2281*log(lstat) - 5.7911*log(7.087e-6*ptratio**2) - 0.61896*log(crim + 1)**2 + 5.4476*log(crim + 1) + 55788.0/tax**2
+{'type': 'tabular_regression', 'dataset': 'boston', 'method': 't08_additive', 'metric': 'R2', 'model_score': 0.8954, 'formula_score': 0.8257, 'fidelity_R2': 0.9614, 'nodes': 63, 'in_domain_test': 0.994, 'export_max_diff': 1.0658141036401503e-14, 'secs': 125.9}
+
+## tabular_regression / auto_mpg  [t06_search]
+preprocessing: {'log_weight': 'log(weight)', 'log_hp': 'log(horsepower)', 'displacement': 'displacement', 'acceleration': 'acceleration', 'model_year': 'model_year', 'cylinders': 'cylinders', 'origin_2': '-(origin - 3)*(origin - 1)', 'origin_3': '(origin/2 - 1/2)*(origin - 2)'}
+y = 0.75174*model_year - 1.1761*(origin - 3.0)*(origin - 1.0) - 0.7653*(1.7422*log(horsepower)**0.5 + 0.93169*log(weight))**2 + 58.5 + 2.7304*(0.70547*displacement**0.5 + 7.7504*(0.5*origin - 0.5)*(origin - 2.0))/acceleration
+{'type': 'tabular_regression', 'dataset': 'auto_mpg', 'method': 't06_search', 'metric': 'R2', 'model_score': 0.8885, 'formula_score': 0.8355, 'fidelity_R2': 0.9607, 'nodes': 49, 'in_domain_test': 0.973, 'export_max_diff': 0.0, 'secs': 115.6}
+
+## forecasting / airline  [t06]
+preprocessing: {'l1': 'l1', 'l2': 'l2', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+y = 0.20635*l1 + 0.75695*l12 + 30.0
+{'type': 'forecasting', 'dataset': 'airline', 'method': 't06', 'metric': 'R2', 'model_score': 0.3803, 'formula_score': 0.8402, 'fidelity_R2': 0.443, 'nodes': 8, 'in_domain_test': 0.583, 'export_max_diff': 0.0, 'secs': 18.2}
+
+## forecasting / carsales  [t06]
+preprocessing: {'l1': 'l1', 'l2': 'l2', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+y = 31.198*(13.754*l1 + 2.8985*l12*sin(pi*month/6) + 41.704*l12 + 3.097*l2)**0.5 - 1381.5*log(l1)
+{'type': 'forecasting', 'dataset': 'carsales', 'method': 't06', 'metric': 'R2', 'model_score': 0.6643, 'formula_score': 0.7405, 'fidelity_R2': 0.8715, 'nodes': 27, 'in_domain_test': 0.792, 'export_max_diff': 0.0, 'secs': 17.5}
+
+## forecasting / robberies  [t06]
+preprocessing: {'l1': 'l1', 'l2': 'l2', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+y = 120.5*log(-0.001958*(-1.344*l1 - 34.67*l1/l2 - 1.432*l2)*log(l12))
+{'type': 'forecasting', 'dataset': 'robberies', 'method': 't06', 'metric': 'R2', 'model_score': -0.5882, 'formula_score': -0.7955, 'fidelity_R2': -0.0648, 'nodes': 20, 'in_domain_test': 0.458, 'export_max_diff': 5.684341886080802e-14, 'secs': 19.6}
+
+## forecasting / meantemp  [t06]
+preprocessing: {'l1': 'l1', 'l2': 'l2', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+y = -2.6651*(-0.34986*l12 + 1.2876*cos(pi*month/6) + (0.65109*l1 - 0.30566*l2 - 9.5*log(l1))/(0.61488*l12 - 3.7864*log(l1)))*log(l1)/log(l12)
+{'type': 'forecasting', 'dataset': 'meantemp', 'method': 't06', 'metric': 'R2', 'model_score': 0.8812, 'formula_score': 0.9207, 'fidelity_R2': 0.9695, 'nodes': 41, 'in_domain_test': 1.0, 'export_max_diff': 7.105427357601002e-15, 'secs': 18.3}
+
+## forecasting / co2  [t06]
+preprocessing: {'l1': 'l1', 'l2': 'l2', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+y = 0.16455*l1 + 0.83947*l12
+{'type': 'forecasting', 'dataset': 'co2', 'method': 't06', 'metric': 'R2', 'model_score': 0.5847, 'formula_score': 0.9183, 'fidelity_R2': -0.2019, 'nodes': 7, 'in_domain_test': 0.375, 'export_max_diff': 0.0, 'secs': 17.5}
+
+## classification / titanic  [t08_additive]
+preprocessing: {'pclass': 'pclass', 'sex': 'sex', 'age': 'age', 'sibsp': 'sibsp', 'log_fare': 'log(fare + 1)'}
+y = 1/(exp(0.08804*age + 1.253*sibsp - 8.147*(0.1746 - 0.02155*log(fare + 1))*((fare + 1)**(-2.648) + 1.065*log(fare + 1)) - 1.088*(0.2478*pclass**2 - 3.378)*(-0.01731*age - 1.293*sex - 0.233*sibsp + 0.7476) + 1.593*exp(-0.7048*sibsp) - 5.705*exp(-1.207*pclass)) + 1.0)
+{'type': 'classification', 'dataset': 'titanic', 'method': 't08_additive', 'metric': 'AUC', 'model_score': 0.8858, 'formula_score': 0.875, 'fidelity_R2': 0.975, 'nodes': 66, 'in_domain_test': 0.993, 'export_max_diff': 0.0, 'secs': 54.1}
+
+## classification / pima_diabetes  [t08_additive]
+preprocessing: {'Pregnancies': 'Pregnancies', 'Glucose': 'Glucose', 'BloodPressure': 'BloodPressure', 'SkinThickness': 'SkinThickness', 'Insulin': 'Insulin', 'BMI': 'BMI', 'DiabetesPedigreeFunction': 'DiabetesPedigreeFunction', 'Age': 'Age'}
+y = 1/(exp(0.003245*Age**2 - 0.2649*Age - 1.12*DiabetesPedigreeFunction - 0.06055*Glucose - 0.04453*Pregnancies**1.737 - 0.0003858*SkinThickness**2 - 39.08*exp(0.0007458*Insulin) + 0.002264*exp(10.16*exp(-1.59e-5*BloodPressure)) - 6.849*exp(-384.8/BMI**2))/exp(-0.0009488*Insulin)**39.081 + 1.0)
+{'type': 'classification', 'dataset': 'pima_diabetes', 'method': 't08_additive', 'metric': 'AUC', 'model_score': 0.7551, 'formula_score': 0.7868, 'fidelity_R2': 0.5011, 'nodes': 60, 'in_domain_test': 0.996, 'export_max_diff': 5.551115123125783e-16, 'secs': 124.3}
+
+## classification / breast_cancer  [t06_search]
+preprocessing: {'mean_radius': 'mean_radius', 'mean_texture': 'mean_texture', 'mean_smoothness': 'mean_smoothness', 'mean_concavity': 'mean_concavity', 'mean_concave_points': 'mean_concave_points', 'worst_radius': 'worst_radius', 'worst_texture': 'worst_texture', 'worst_concave_points': 'worst_concave_points'}
+y = 1/(1.2479e-47*(-1.9565*worst_concave_points - 1.642)**22*(-1.5934*mean_concave_points - 1.2652*mean_smoothness - 0.87592)**22*(1.1003*mean_radius + 1.75*worst_radius + 0.87531*worst_texture)**22 + 1.0)
+{'type': 'classification', 'dataset': 'breast_cancer', 'method': 't06_search', 'metric': 'AUC', 'model_score': 0.9923, 'formula_score': 0.9929, 'fidelity_R2': 0.9847, 'nodes': 36, 'in_domain_test': 0.988, 'export_max_diff': 2.3314683517128287e-15, 'secs': 494.6}
+
+## classification / penguins  [t08_additive]
+preprocessing: {'bill_length_mm': 'bill_length_mm', 'bill_depth_mm': 'bill_depth_mm', 'flipper_length_mm': 'flipper_length_mm', 'body_mass_g': 'body_mass_g'}
+y = 1/(4.388e+94*exp(-3.185*(0.3217*bill_depth_mm - exp(0.08327*bill_depth_mm))*log(0.5732*bill_depth_mm) - 24.93*log(0.04555*bill_length_mm)**2 - 537.9*log(0.01465*body_mass_g)*log(0.07089*body_mass_g)/sqrt(body_mass_g) + 1.475e-7*body_mass_g*(-2.351e-8*bill_length_mm*flipper_length_mm**4 + 0.03317*flipper_length_mm**2)**2/bill_depth_mm**2) + 1.0)
+{'type': 'classification', 'dataset': 'penguins', 'method': 't08_additive', 'metric': 'AUC', 'model_score': 1.0, 'formula_score': 1.0, 'fidelity_R2': 0.9675, 'nodes': 65, 'in_domain_test': 0.961, 'export_max_diff': 0.0054648937356370775, 'secs': 64.1}
+

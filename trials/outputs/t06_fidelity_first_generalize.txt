@@ -1,0 +1,32 @@
+[t06_fidelity_first] physical_law       gravity        model=0.997 formula=1.000 fid=0.997 nodes=6 extrap=1.000
+    y = m1*m2/r**2
+[t06_fidelity_first] physical_law       pendulum       model=0.996 formula=0.999 fid=0.995 nodes=8 extrap=0.999
+    y = 6.5*L**0.47369/g**0.50153
+[t06_fidelity_first] physical_law       lens           model=0.996 formula=0.991 fid=0.993 nodes=15 extrap=0.964
+    y = 0.5*u**0.41401*v**0.41547*exp(0.1192*log(u)*log(v))
+[t06_fidelity_first] physical_law       rc_decay       model=0.995 formula=0.997 fid=0.992 nodes=11 extrap=0.994
+    y = -0.34172*V0*log(sin(0.352*t/R))
+[t06_fidelity_first] tabular_regression diabetes       model=0.431 formula=0.417 fid=0.957 nodes=37 
+    y = 16.195*(s5**0.49767 - log(0.2147*log(s1)))*log(bmi)*log(bp) - 18.204*log(s3) + 28.192*log(s6) - 26.883*log(sex) - 393.0*cos(0.1843*log(s4))
+[t06_fidelity_first] tabular_regression boston         model=0.895 formula=0.765 fid=0.911 nodes=22 
+    y = -0.053817*age - 12.45*nox - 0.68203*ptratio + 4.1079*rm - 5.5807*log(dis) - 6.4667*log(lstat) + 42.5
+[t06_fidelity_first] tabular_regression auto_mpg       model=0.888 formula=0.835 fid=0.961 nodes=49 
+    y = 0.75174*model_year - 1.1761*(origin - 3.0)*(origin - 1.0) - 0.7653*(1.7422*log(horsepower)**0.5 + 0.93169*log(weight))**2 + 58.5 + 2.7304*(0.70547*displacement**0.5 + 7.7504*(0.5*origin - 0.5)*(origin - 2.0))/acceleration
+[t06_fidelity_first] forecasting        airline        model=0.380 formula=0.840 fid=0.443 nodes=8 
+    y = 0.20635*l1 + 0.75695*l12 + 30.0
+[t06_fidelity_first] forecasting        carsales       model=0.664 formula=0.740 fid=0.872 nodes=27 
+    y = 31.198*(13.754*l1 + 2.8985*l12*sin(pi*month/6) + 41.704*l12 + 3.097*l2)**0.5 - 1381.5*log(l1)
+[t06_fidelity_first] forecasting        robberies      model=-0.588 formula=-0.796 fid=-0.065 nodes=20 
+    y = 120.5*log(-0.001958*(-1.344*l1 - 34.67*l1/l2 - 1.432*l2)*log(l12))
+[t06_fidelity_first] forecasting        meantemp       model=0.881 formula=0.921 fid=0.969 nodes=41 
+    y = -2.6651*(-0.34986*l12 + 1.2876*cos(pi*month/6) + (0.65109*l1 - 0.30566*l2 - 9.5*log(l1))/(0.61488*l12 - 3.7864*log(l1)))*log(l1)/log(l12)
+[t06_fidelity_first] forecasting        co2            model=0.585 formula=0.918 fid=-0.202 nodes=7 
+    y = 0.16455*l1 + 0.83947*l12
+[t06_fidelity_first] classification     titanic        model=0.886 formula=0.884 fid=0.938 nodes=40 
+    y = 1/(exp(0.2445*sqrt(age) + 0.0986*pclass*(1.142*sqrt(age) + 1.981*sibsp) - 0.5838*sex - 0.8266*sqrt(log(fare + 1)) - 4*sex/pclass) + 1.0)
+[t06_fidelity_first] classification     pima_diabetes  model=0.755 formula=0.779 fid=0.517 nodes=32 
+    y = 1/(exp(-0.1119*BMI - 0.114*sqrt(BloodPressure) - 0.04395*DiabetesPedigreeFunction*SkinThickness - 0.06032*Glucose + 0.06588*sqrt(Insulin) - 0.02427*Pregnancies**2 + 27/2) + 1.0)
+[t06_fidelity_first] classification     breast_cancer  model=0.992 formula=0.993 fid=0.985 nodes=36 
+    y = 1/(1.2479e-47*(-1.9565*worst_concave_points - 1.642)**22*(-1.5934*mean_concave_points - 1.2652*mean_smoothness - 0.87592)**22*(1.1003*mean_radius + 1.75*worst_radius + 0.87531*worst_texture)**22 + 1.0)
+[t06_fidelity_first] classification     penguins       model=1.000 formula=1.000 fid=0.989 nodes=38 
+    y = 1/(1.0 + 5.6346e+6*exp(-8235*log(bill_length_mm)**4/((sin(0.9396*log(bill_depth_mm) - 1.682*log(body_mass_g)) - 2.047*log(body_mass_g)/log(bill_length_mm))**4*log(flipper_length_mm)**4)))

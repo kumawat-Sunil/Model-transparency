@@ -1,0 +1,25 @@
+
+=========== DIABETES: MLP -> expression on raw inputs ===========
+[max_len=7] nodes=13  test R2=0.404  fidelity_to_teacher=0.825
+   y = 0.0058575*bp*(2.3002*bmi*s5 - 1.8669*s3) + 42.031
+[max_len=15] nodes=24  test R2=0.408  fidelity_to_teacher=0.910
+   y = 0.11257*bmi*bp - 4.0185*bmi - 2.1102*bp - 0.44887*s1 + 11.131*s4 + 51.785*s5 - 20.984*sex + 2.3983
+[max_len=30] nodes=55  test R2=0.425  fidelity_to_teacher=0.942
+   y = -0.8553*age - 0.0045065*bmi*(-24.189*bp - 304.39*sex) - 5.8905*bmi - 1.9658*bp - 0.99668*s1 + 0.76572*s2 + 70.962*s5 + 1.001*(0.05441*s3 - 0.038195*s6)**4 - 1.001*(-0.072057*age - 0.033403*s3 + 6.373*sex)**2 - 0.17502
+   teacher/baseline score: 0.376
+
+=========== AIRLINE (distilled from XGB) -> expression of raw lags ===========
+[max_len=7] test sMAPE one-step=4.81%  (XGB teacher 10.81%, seasonal-naive 11.17%)
+   y = 0.87363*l12 - 0.082775*l3 + 62.755*log_l1 - 265.94
+[max_len=15] test sMAPE one-step=8.21%  (XGB teacher 10.81%, seasonal-naive 11.17%)
+   y = -2.7121e-9*l1**2*l12**2 + 0.31354*l1 + 0.85301*l12 + 1.0313*(0.46276*cos_m - 0.003108*l1)**8 - 7.0725
+[max_len=30] test sMAPE one-step=3.66%  (XGB teacher 10.81%, seasonal-naive 11.17%)
+   y = 0.7791*l1 + 0.44767*l12 + 1.0*(0.1244*l12 - 5.5776*sin_m)*(-0.002666*l3 + cos(32.555302*sin_m)) + 1.0*(-0.080508*l12 + 0.046922*l3 - 1.0904*sin_m)*(-0.017362*l12 + 0.021104*l3 + exp(-2.921969*sin_m))*cos(5.217516*sin_m) - 12.238
+
+=========== AIRLINE (fit on labels) -> expression of raw lags ===========
+[max_len=7] test sMAPE one-step=6.96%  (XGB teacher 10.81%, seasonal-naive 11.17%)
+   y = 0.99142*(0.00305*l12 + 0.000949*l3)*(-0.30476*l3 + 64.436*log_l1) + 1.4106
+[max_len=15] test sMAPE one-step=4.55%  (XGB teacher 10.81%, seasonal-naive 11.17%)
+   y = 0.08613*cos_m*(-1.61*l1 + 43.745*log_l12 + 245.19*sin_m) + 0.63384*l12 + 0.15009*l3 + 56.864*log_l1 - 238.45
+[max_len=30] test sMAPE one-step=3.21%  (XGB teacher 10.81%, seasonal-naive 11.17%)
+   y = -11.49*cos_m + 0.86711*l1 + 0.11709*l12 + 0.99551*(-0.003287*l1 + 2.0686*sin_m)*(0.010041*l12 - 0.047076*sin_m)*(-(7.8723*sin_m + 12.993)*cos(52.442131*sin_m) + exp(2.855345*cos_m)) + 0.99551*(0.000189*l12 + 0.032671)*exp(6.462864*cos_m) + 1.3645

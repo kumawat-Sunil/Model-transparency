@@ -1,0 +1,26 @@
+t01_operon_multirep  2026-10-01 08:47:07.081415  baseline multi-representation Operon
+
+#### t01_operon_multirep | gravity
+PREPROCESSING: {'m1': 'm1', 'm2': 'm2', 'r': 'r'}
+choice: ('raw', 10, np.float64(0.9959638960066723))
+FORMULA (raw inputs): y = 1.0062*m1*m2/(r**2*cos(0.139706*r)) - 0.10743
+model_score=0.9941  formula_score=0.9993  fidelity=0.9953  nodes=15  secs=17.5000  extrap_r2=0.9981
+truth: m1*m2/r**2
+
+#### t01_operon_multirep | diabetes
+PREPROCESSING: {'age': 'age', 'sex': 'sex', 'bmi': 'bmi', 'bp': 'bp', 's1': 's1', 's2': 's2', 's3': 's3', 's4': 's4', 's5': 's5', 's6': 's6'}
+choice: ('log-inputs', 20, np.float64(0.9457788759250718))
+FORMULA (raw inputs): y = 119.49/sex**0.29306 + 17.472*(-0.45402*log(s1) + 0.87742*log(s5) + 0.055742*log(s6) + 2.7183)*log(bmi)*log(bp) + 50.68*log(s2) - 727.99 + 92.226*log(s4)/log(s3)
+model_score=0.4368  formula_score=0.4352  fidelity=0.9319  nodes=39  secs=16.8000
+
+#### t01_operon_multirep | airline
+PREPROCESSING: {'l1': 'l1', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l2': 'log(l2)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+choice: ('raw', 20, np.float64(0.9635746140027851))
+FORMULA (raw inputs): y = 0.41375*l1**0.89695 + 0.75141*l12 + 7.6317*log(l2) - 0.82751*sin(0.01187*l1**0.896954*log(l1)) - 4.2285*cos(pi*month/6) - 17.357
+model_score=0.3803  formula_score=0.8704  fidelity=0.3939  nodes=31  secs=8.0000
+
+#### t01_operon_multirep | titanic
+PREPROCESSING: {'pclass': 'pclass', 'sex': 'sex', 'age': 'age', 'sibsp': 'sibsp', 'log_fare': 'log(fare + 1)'}
+choice: ('raw', 20, np.float64(0.9270414193310168))
+FORMULA (raw inputs): y = 1/(0.6313*exp(0.0280908218334463*age*pclass + 0.0735006286466446*sqrt(pclass)*sibsp**2 - 5.09436156669797*sex**2*sin(0.829256*pclass)/sqrt(pclass)) + 1.0)
+model_score=0.8618  formula_score=0.8642  fidelity=0.9262  nodes=32  secs=8.5000

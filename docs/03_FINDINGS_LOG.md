@@ -90,3 +90,8 @@ F47. Typical error roughly doubles outside the training box (median MAE 2.35 ins
 F48. **A raw-input box is NOT a safe guard**: catastrophic errors (max 21,006; 640 for a mis-specified case) occurred on rows unflagged by raw min/max. Cause: failures are driven by engineered features (momentum ratio (l1-l12)/l12, products) leaving their training range even when every raw input is in range.
 F49. **Feature-space (z) box + raw box flags ~22% of rows and cuts the worst unflagged error from 21,006 to 121** (median of per-config max_unflagged 12.95 vs max_all 30.65). Conclusion: the certificate must be computed on the *inputs of g* (T(x)), i.e. the fused pipeline needs both F and a guard G(x_raw)=[T(x) in training box], which again shows T and g cannot be treated separately. Residual risk remains (121 > typical 5) -> next: density/leverage-based guards, clipping of ratio terms.
 Caveat: synthetic data, XGB teacher, sparse engine only.
+
+## E14 (results/e14_log.txt) — END-TO-END with Operon (pip wheel; PySR blocked: Julia download 403 via proxy)
+Part 1 train model -> expression; Part 2 raw data -> expression only (no model). Operon is ~100x faster than gplearn and gives better expressions.
+F50. Diabetes (real, raw units, MLP teacher R2 0.376): 24-node expression on RAW inputs, test R2 0.408, fidelity to MLP 0.91: y = 0.1126*bmi*bp - 4.02*bmi - 2.11*bp - 0.449*s1 + 11.1*s4 + 51.8*s5 - 21.0*sex + 2.40. (7-node: R2 0.404; 55-node: 0.425.)
+F51. Airline one-step sMAPE (XGB teacher 10.81%, seasonal-naive 11.17%): distilled 7-node y = 0.874*l12 - 0.0828*l3 + 62.76*log(l1) - 265.9 -> 4.81%; label-fit 30-node -> 3.21%. Raw lags in, forecast out, no model object.

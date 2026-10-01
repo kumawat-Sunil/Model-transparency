@@ -1,0 +1,7 @@
+numpy
+pandas
+scipy
+sympy
+scikit-learn
+pyoperon
+xgboost   # only for the demo

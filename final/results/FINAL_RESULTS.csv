@@ -1,0 +1,17 @@
+type,dataset,method,metric,model_score,formula_score,fidelity_R2,nodes,in_domain_test,export_max_diff,extrapolation_R2
+physical_law,gravity,t06,R2,0.9966,1.0,0.9966,6,0.993,0.0,1.0
+physical_law,pendulum,t06,R2,0.9958,0.9989,0.9951,8,0.997,0.0,0.9987
+physical_law,lens,t06,R2,0.9956,0.9907,0.9925,15,0.999,0.0,0.9641
+physical_law,rc_decay,t06,R2,0.995,0.9973,0.9924,11,0.99,0.0,0.9938
+forecasting,airline,t06,R2,0.3803,0.8402,0.443,8,0.583,0.0,
+forecasting,carsales,t06,R2,0.6643,0.7405,0.8715,27,0.792,0.0,
+forecasting,robberies,t06,R2,-0.5882,-0.7955,-0.0648,20,0.458,5.684341886080803e-14,
+forecasting,meantemp,t06,R2,0.8812,0.9207,0.9695,41,1.0,7.105427357601002e-15,
+forecasting,co2,t06,R2,0.5847,0.9183,-0.2019,7,0.375,0.0,
+tabular_regression,diabetes,t09_sparse_poly,R2,0.431,0.4264,0.9621,68,0.972,0.0,
+tabular_regression,boston,t09_sparse_poly,R2,0.8954,0.8538,0.9814,179,0.994,2.4868995751603507e-14,
+tabular_regression,auto_mpg,t09_sparse_poly,R2,0.8885,0.8722,0.9932,110,0.973,5.684341886080803e-14,
+classification,titanic,t09_sparse_poly,AUC,0.8858,0.8836,0.9696,78,0.993,3.6570097050603323e-07,
+classification,pima_diabetes,t09_sparse_poly,AUC,0.7551,0.7886,0.8681,173,0.996,9.031240481904844e-06,
+classification,breast_cancer,t09_sparse_poly,AUC,0.9923,0.9927,0.9968,127,0.988,2.760912343968691e-06,
+classification,penguins,t09_sparse_poly,AUC,1.0,1.0,0.9931,45,0.961,4.551161050247998e-06,

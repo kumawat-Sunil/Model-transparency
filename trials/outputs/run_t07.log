@@ -1,0 +1,14 @@
+[t07_capacity] tabular_regression diabetes       model=0.431 formula=0.421 fid=0.962 nodes=39 
+    y = 19.846*(4.7343*bmi*s5 + 4.7189*bp - 0.97749*s1 - 1.4044*s3 + 1.3116*s6 - 16.159*(-0.50307*s4 - 17.378)*(1.3486*s5 - 0.97749*sex)**0.5)**0.5 - 633.5
+[t07_capacity] tabular_regression boston         model=0.895 formula=0.797 fid=0.927 nodes=47 
+    y = 33.5*exp(0.1129*rm)/(dis**0.15594*lstat**0.19674) + 0.90142*nox*(-0.045485*age - 2.3672*log(crim + 1))*log(lstat) - 0.27642*ptratio*log(lstat) + 8.5111*log(lstat) + 9.7092*sin(0.4233*log(crim + 1)) - 17.71
+[t07_capacity] tabular_regression auto_mpg       model=0.888 formula=0.851 fid=0.973 nodes=54 
+    y = -47.802*(0.080226*(origin - 3.0)*(origin - 1.0) + 0.47975*log(horsepower) + 1.1033*log(weight))*log(log(-1135.0*displacement + (36.23*model_year - 147.8*(origin/2 - 1/2)*(origin - 2) - 7522/log(10.47*acceleration))**2))/model_year**0.5 + 181.8
+[t07_capacity] classification     titanic        model=0.886 formula=0.871 fid=0.956 nodes=50 
+    y = 1/(exp(0.03849*age - sibsp/2 - 0.2693*(0.3892*sqrt(age) + 5.04*sex + 0.7207*sibsp)*(-1.015*pclass + 3.015*sex - 0.3337*sibsp) + 0.001368*log(fare + 1)**4)/(fare + 1.0)**0.44434 + 1.0)
+[t07_capacity] classification     pima_diabetes  model=0.755 formula=0.781 fid=0.580 nodes=51 
+    y = 1/(2.0383e+34/(-0.023221*Age*Pregnancies**2 + 1.8255*BMI + 0.19727*BloodPressure + 10.916*DiabetesPedigreeFunction**2 + 1.227*Glucose + 1.2563*Pregnancies**2 + 0.32853*SkinThickness + 28.062 - 1.2515*(5.9651*Glucose + 1.2841*Insulin)/Age)**14.302 + 1.0)
+[t07_capacity] classification     breast_cancer  model=0.992 formula=0.993 fid=0.983 nodes=54 
+    y = 1/(3.2453e-16*(worst_texture*(0.087021*mean_radius + (1.5992*mean_concavity + 0.2682)**0.5)*((4.1365*mean_concave_points + 0.043519*worst_radius)*(4.6094*worst_concave_points + 0.043519*worst_radius)*exp(4*mean_smoothness) + 0.21729/(4.6094*worst_concave_points + 0.043519*worst_radius)))**7.9648 + 1.0)
+[t07_capacity] classification     penguins       model=1.000 formula=1.000 fid=0.985 nodes=49 
+    y = 1/(0.25156*exp(3.576*(2.389 - 0.3931*log(body_mass_g))*log(bill_length_mm)*sin(sin(1.476*log(flipper_length_mm) + 6.651*log(body_mass_g)/log(bill_length_mm))) + 1.698*sin(59*log(bill_depth_mm)/(2*log(bill_length_mm)) - 3.28*log(flipper_length_mm))) + 1.0)

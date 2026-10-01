@@ -1,0 +1,17 @@
+type,dataset,method,metric,model_score,formula_score,fidelity_R2,nodes,in_domain_test,export_max_diff,secs,extrapolation_R2
+physical_law,gravity,t06,R2,0.9966,1.0,0.9966,6,0.993,0.0,40.4,1.0
+physical_law,pendulum,t06,R2,0.9958,0.9989,0.9951,8,0.997,0.0,60.0,0.9987
+physical_law,lens,t06,R2,0.9956,0.9907,0.9925,15,0.999,0.0,64.3,0.9641
+physical_law,rc_decay,t06,R2,0.995,0.9973,0.9924,11,0.99,0.0,39.7,0.9938
+tabular_regression,diabetes,t08_additive,R2,0.431,0.4438,0.9608,66,0.972,0.0,267.0,
+tabular_regression,boston,t08_additive,R2,0.8954,0.8257,0.9614,63,0.994,1.0658141036401503e-14,125.9,
+tabular_regression,auto_mpg,t06_search,R2,0.8885,0.8355,0.9607,49,0.973,0.0,115.6,
+forecasting,airline,t06,R2,0.3803,0.8402,0.443,8,0.583,0.0,18.2,
+forecasting,carsales,t06,R2,0.6643,0.7405,0.8715,27,0.792,0.0,17.5,
+forecasting,robberies,t06,R2,-0.5882,-0.7955,-0.0648,20,0.458,5.684341886080802e-14,19.6,
+forecasting,meantemp,t06,R2,0.8812,0.9207,0.9695,41,1.0,7.105427357601002e-15,18.3,
+forecasting,co2,t06,R2,0.5847,0.9183,-0.2019,7,0.375,0.0,17.5,
+classification,titanic,t08_additive,AUC,0.8858,0.875,0.975,66,0.993,0.0,54.1,
+classification,pima_diabetes,t08_additive,AUC,0.7551,0.7868,0.5011,60,0.996,5.551115123125783e-16,124.3,
+classification,breast_cancer,t06_search,AUC,0.9923,0.9929,0.9847,36,0.988,2.3314683517128287e-15,494.6,
+classification,penguins,t08_additive,AUC,1.0,1.0,0.9675,65,0.961,0.0054648937356370775,64.1,
