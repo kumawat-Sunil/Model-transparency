@@ -87,3 +87,24 @@ def window_xy(y, months):
     y = np.asarray(y, float); idx = np.arange(12, len(y))
     X = np.column_stack([y[idx - 1], y[idx - 2], y[idx - 3], y[idx - 6], y[idx - 12], months[idx]])
     return idx, X, y[idx]
+
+
+def real_feature_exprs_raw():
+    """Ablation: no log transforms (levels only) + Fourier month."""
+    return {
+        "l1": lambda e, L: e["l1"], "l2": lambda e, L: e["l2"], "l3": lambda e, L: e["l3"], "l6": lambda e, L: e["l6"], "l12": lambda e, L: e["l12"],
+        "roll3": lambda e, L: (e["l1"] + e["l2"] + e["l3"]) / 3,
+        "sin_m": lambda e, L: L.sin(2 * L.pi * e["month"] / 12), "cos_m": lambda e, L: L.cos(2 * L.pi * e["month"] / 12),
+        "sin2_m": lambda e, L: L.sin(4 * L.pi * e["month"] / 12), "cos2_m": lambda e, L: L.cos(4 * L.pi * e["month"] / 12),
+    }
+
+
+def real_feature_exprs_nofourier():
+    """Ablation: log lags but month only as raw number (no Fourier terms)."""
+    f = real_feature_exprs(); [f.pop(k) for k in ("sin_m", "cos_m", "sin2_m", "cos2_m")]
+    f["month"] = lambda e, L: e["month"]; return f
+
+
+def make_real_pipeline_kind(kind="full"):
+    ex = {"full": real_feature_exprs, "nolog": real_feature_exprs_raw, "nofourier": real_feature_exprs_nofourier}[kind]()
+    return SymbolicPipeline(RAW_REAL, ex)

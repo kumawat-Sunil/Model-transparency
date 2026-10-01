@@ -112,3 +112,30 @@ def sparse_select(Z, y, Zv, yv, deg2=True, n_alphas=25, ridge=1e-3, rule="min", 
             return ex
         return expr, len(sup), [(n, e_, build(s_, m_)) for n, e_, _, s_, m_ in path]
     return expr, len(sup)
+
+
+def sparse_cv_select(Z, y_target, y_true, fold_origins, horizon=12, deg2=True, sizes=(1, 2, 3, 4, 5, 6, 8, 10, 15, 20, 30), ridge=1e-3, return_cv=False):
+    """Rolling-origin CV choice of support size (rows of Z assumed time-ordered). Supports from lasso path on full train;
+    per fold ridge-refit on rows < origin, score on next `horizon` rows against TRUE labels; pick smallest size within 1 SE of best CV mean."""
+    terms = library(Z, deg2); A = np.column_stack([t[1] for t in terms])
+    kp = _prune_collinear(A); A = A[:, kp]; terms = [terms[i] for i in kp]
+    mu, sc = A.mean(0), A.std(0) + 1e-12; As = (A - mu) / sc
+    alphas, coefs, _ = lasso_path(As, y_target - y_target.mean(), n_alphas=60, eps=1e-4)
+    sup_by_size = {}
+    for j in range(coefs.shape[1]):
+        sup = tuple(np.flatnonzero(np.abs(coefs[:, j]) > 1e-10))
+        for s in sizes:
+            if len(sup) >= s and (s not in sup_by_size or len(sup) < len(sup_by_size[s])): sup_by_size[s] = sup
+    cv = {}
+    for s, sup in sup_by_size.items():
+        errs = []
+        for o in fold_origins:
+            m = Ridge(alpha=ridge).fit(As[:o][:, sup], y_target[:o]); p = m.predict(As[o:o + horizon][:, sup])
+            errs.append(np.sqrt(np.mean((p - y_true[o:o + horizon]) ** 2)))
+        cv[s] = (float(np.mean(errs)), float(np.std(errs) / np.sqrt(len(errs))))
+    best = min(cv, key=lambda s: cv[s][0]); thr = cv[best][0] + cv[best][1]
+    chosen = min([s for s in cv if cv[s][0] <= thr])
+    sup = sup_by_size[chosen]; m = Ridge(alpha=ridge).fit(As[:, sup], y_target)
+    expr = sp.Float(float(m.intercept_ - np.sum(m.coef_ * mu[list(sup)] / sc[list(sup)])), 8)
+    for c, i in zip(m.coef_, sup): expr += sp.Float(float(c / sc[i]), 8) * terms[i][0]
+    return (expr, len(sup), cv) if return_cv else (expr, len(sup))

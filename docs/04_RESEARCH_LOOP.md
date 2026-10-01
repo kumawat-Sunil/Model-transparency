@@ -15,3 +15,9 @@ Stage 1 established; fusion + joint complexity + temporal extrapolation = candid
 Result: H1 strong yes, H3 yes, H2 no (on easy data). New: fidelity-vs-accuracy off-support is the central conceptual issue (RQ8).
 Next: (E02) repair sparse engine; vary noise/n/library mis-specification to find when distillation beats label-SR (H2) and when symbolic collapses (H4);
 add multi-seed. (E03) real public datasets + mis-specified truth. (E04) taxonomy of preprocessing expressibility (H5).
+
+## Round 2-5 summary (E02-E07)
+H1 supported (synthetic+real); H2 rejected for forecasting (F10,F31); H3 confirmed incl. classification+missing/one-hot (F22); H4 partly: polynomial library fails on moons/sin-abs (F28), GP rescues moons;
+H5 resolved as a taxonomy: algebraic (scale, log, PCA, poly) / piecewise (impute, one-hot) / tables (quantile) with node-cost numbers (F29); H6 refuted for naive augmentation (F11,F16);
+H7 (complexity growth = misspecification symptom) weakly supported (F13); H8 Pareto knee at 3-5 terms mostly holds but depends on library (F18,F32).
+New: H9: teacher queries help only for small/noisy labels with abundant on-manifold queries (-> E08). H10: library prior (log, Fourier) is the real source of performance; auto-discovery of T (SR for features) is the open step.

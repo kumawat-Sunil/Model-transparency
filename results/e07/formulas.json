@@ -1,0 +1,142 @@
+{
+ "airline|labels|full": {
+  "terms": 16,
+  "fused_nodes": 220,
+  "expr": "(long)"
+ },
+ "airline|distill|full": {
+  "terms": 16,
+  "fused_nodes": 220,
+  "expr": "(long)"
+ },
+ "airline|labels|nolog": {
+  "terms": 4,
+  "fused_nodes": 27,
+  "expr": "0.2191*l1 + 0.8246*l12 - 6.686*(0.01087*l2 - 2.773)*(0.01158*l6 - 2.825) - 5.166*cos(pi*month/6) + 17.58"
+ },
+ "airline|labels|nofourier": {
+  "terms": 3,
+  "fused_nodes": 26,
+  "expr": "14.04*(2.729*log(l12 + 1) - 14.68)**2 + 48.53*log(l1 + 1) + 194.5*log(l12 + 1) - 1068.0"
+ },
+ "carsales|labels|full": {
+  "terms": 9,
+  "fused_nodes": 107,
+  "expr": "-14.64*(3.062*log(l12 + 1) - 28.92)*(1.414*sin(pi*month/6) + 4.495e-19) - 637.6*(3.062*log(l12 + 1) - 28.92)*(1.414*cos(pi*month/6) + 5.234e-17) - 1011.0*(1.414*sin(pi*month/6) + 4.495e-19)*(1.414*cos(pi*month/3) - 5.67e-17) - 2411.0*log(l1 + 1) + 4020.0*log(l12 + 1) + 1.064e+4*log(l1/3 + l2/3 + l3/3 + 1) + 1293.0*sin(pi*month/6) - 3249.0*sin(pi*month/3) + 148.8*cos(pi*month/6) - 1.022e+5"
+ },
+ "carsales|distill|full": {
+  "terms": 9,
+  "fused_nodes": 107,
+  "expr": "-12.36*(3.062*log(l12 + 1) - 28.92)*(1.414*sin(pi*month/6) + 4.495e-19) - 635.2*(3.062*log(l12 + 1) - 28.92)*(1.414*cos(pi*month/6) + 5.234e-17) - 1005.0*(1.414*sin(pi*month/6) + 4.495e-19)*(1.414*cos(pi*month/3) - 5.67e-17) - 2384.0*log(l1 + 1) + 4058.0*log(l12 + 1) + 1.057e+4*log(l1/3 + l2/3 + l3/3 + 1) + 1286.0*sin(pi*month/6) - 3231.0*sin(pi*month/3) + 146.9*cos(pi*month/6) - 1.021e+5"
+ },
+ "carsales|labels|nolog": {
+  "terms": 3,
+  "fused_nodes": 15,
+  "expr": "0.1772*l1 + 0.7105*l12 - 869.0*sin(pi*month/3) + 2406.0"
+ },
+ "carsales|labels|nofourier": {
+  "terms": 2,
+  "fused_nodes": 14,
+  "expr": "1409.0*log(l1 + 1) + 1.096e+4*log(l12 + 1) - 1.025e+5"
+ },
+ "robberies|labels|full": {
+  "terms": 4,
+  "fused_nodes": 46,
+  "expr": "21.26*(1.631*log(l1 + 1) - 8.052)*(1.516*log(l12 + 1) - 7.078) + 67.42*log(l1 + 1) + 36.4*log(l12 + 1) + 43.29*log(l1/3 + l2/3 + l3/3 + 1) - 565.9"
+ },
+ "robberies|distill|full": {
+  "terms": 4,
+  "fused_nodes": 46,
+  "expr": "21.26*(1.631*log(l1 + 1) - 8.052)*(1.516*log(l12 + 1) - 7.078) + 67.44*log(l1 + 1) + 36.5*log(l12 + 1) + 43.16*log(l1/3 + l2/3 + l3/3 + 1) - 565.8"
+ },
+ "robberies|labels|nolog": {
+  "terms": 5,
+  "fused_nodes": 34,
+  "expr": "0.5298*l1 + 0.2384*l12 + 0.03777*l2 + 0.2078*l3 - 8.148*(1.41*sin(pi*month/3) - 0.01489)*(1.428*cos(pi*month/6) + 0.0325) + 11.37"
+ },
+ "robberies|labels|nofourier": {
+  "terms": 4,
+  "fused_nodes": 46,
+  "expr": "21.26*(1.631*log(l1 + 1) - 8.052)*(1.516*log(l12 + 1) - 7.078) + 67.42*log(l1 + 1) + 36.4*log(l12 + 1) + 43.29*log(l1/3 + l2/3 + l3/3 + 1) - 565.9"
+ },
+ "meantemp|labels|full": {
+  "terms": 10,
+  "fused_nodes": 129,
+  "expr": "(long)"
+ },
+ "meantemp|distill|full": {
+  "terms": 10,
+  "fused_nodes": 128,
+  "expr": "(long)"
+ },
+ "meantemp|labels|nolog": {
+  "terms": 10,
+  "fused_nodes": 105,
+  "expr": "0.2351*l1 - 0.1323*l12 + 0.05073*l6 + 1.096*(0.1148*l1 - 5.622)*(0.116*l12 - 5.677) + 0.1169*(0.1148*l1 - 5.622)*(1.414*sin(pi*month/3) + 1.857e-18) - 0.8371*(0.116*l12 - 5.677)*(1.414*cos(pi*month/6) + 5.234e-17) - 0.741*(0.1149*l2 - 5.626)*(1.414*cos(pi*month/3) - 5.388e-17) + 0.6052*(1.414*sin(pi*month/3) + 1.857e-18)*(1.414*cos(pi*month/3) - 5.388e-17) - 4.839*sin(pi*month/6) - 9.757*cos(pi*month/6) + 39.83"
+ },
+ "meantemp|labels|nofourier": {
+  "terms": 15,
+  "fused_nodes": 212,
+  "expr": "(long)"
+ },
+ "writingpaper|labels|full": {
+  "terms": 30,
+  "fused_nodes": 508,
+  "expr": "(long)"
+ },
+ "writingpaper|distill|full": {
+  "terms": 30,
+  "fused_nodes": 508,
+  "expr": "(long)"
+ },
+ "writingpaper|labels|nolog": {
+  "terms": 3,
+  "fused_nodes": 30,
+  "expr": "0.0366*l1 + 0.7925*l12 + 0.0366*l2 + 0.0366*l3 + 74.9*(0.002516*l12 - 4.1)*(1.415*sin(pi*month/3) - 0.02207) + 255.9"
+ },
+ "writingpaper|labels|nofourier": {
+  "terms": 2,
+  "fused_nodes": 22,
+  "expr": "1121.0*log(l12 + 1) + 310.8*log(l1/3 + l2/3 + l3/3 + 1) - 8834.0"
+ },
+ "co2|labels|full": {
+  "terms": 11,
+  "fused_nodes": 130,
+  "expr": "(long)"
+ },
+ "co2|distill|full": {
+  "terms": 13,
+  "fused_nodes": 161,
+  "expr": "(long)"
+ },
+ "co2|labels|nolog": {
+  "terms": 10,
+  "fused_nodes": 114,
+  "expr": "0.8145*l1 + 0.1875*l6 + 0.07295*(0.06327*l3 - 21.43)*(1.42*sin(pi*month/6) + 0.01746) + 0.0594*(0.06346*l6 - 21.47)*(1.409*cos(pi*month/6) + 0.002516) - 0.1213*(1.42*sin(pi*month/6) + 0.01746)*(1.414*cos(pi*month/3) - 0.0102) + 0.1*(1.415*sin(pi*month/3) + 0.002527)**2 + 0.07479*(1.409*cos(pi*month/6) + 0.002516)*(1.414*cos(pi*month/3) - 0.0102) + 1.619*sin(pi*month/6) - 0.5313*sin(pi*month/3) + 0.2758*cos(pi*month/3) - 0.5708"
+ },
+ "co2|labels|nofourier": {
+  "terms": 8,
+  "fused_nodes": 80,
+  "expr": "-0.1544*month + 0.4884*(0.2903*month - 1.903)**2 - 4.528*(0.2903*month - 1.903)*(21.54*log(l1 + 1) - 125.5) + 4.569*(0.2903*month - 1.903)*(21.62*log(l6 + 1) - 126.0) + 0.3546*(21.86*log(l12 + 1) - 127.3)**2 + 0.03763*(21.62*log(l6 + 1) - 126.0)**2 + 399.7*log(l1 + 1) - 60.88*log(l3 + 1) - 1636.0"
+ },
+ "sunspots|labels|full": {
+  "terms": 3,
+  "fused_nodes": 42,
+  "expr": "16.58*(1.061*log(l1/3 + l2/3 + l3/3 + 1) - 4.241)**2 + 15.25*log(l1 + 1) + 48.26*log(l1/3 + l2/3 + l3/3 + 1) - 193.8"
+ },
+ "sunspots|distill|full": {
+  "terms": 3,
+  "fused_nodes": 42,
+  "expr": "16.58*(1.061*log(l1/3 + l2/3 + l3/3 + 1) - 4.241)**2 + 15.14*log(l1 + 1) + 48.36*log(l1/3 + l2/3 + l3/3 + 1) - 193.8"
+ },
+ "sunspots|labels|nolog": {
+  "terms": 2,
+  "fused_nodes": 11,
+  "expr": "0.6516*l1 + 0.1548*l2 + 0.1548*l3 + 3.312"
+ },
+ "sunspots|labels|nofourier": {
+  "terms": 3,
+  "fused_nodes": 42,
+  "expr": "16.58*(1.061*log(l1/3 + l2/3 + l3/3 + 1) - 4.241)**2 + 15.25*log(l1 + 1) + 48.26*log(l1/3 + l2/3 + l3/3 + 1) - 193.8"
+ }
+}
