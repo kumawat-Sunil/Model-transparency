@@ -1,1 +1,12 @@
 # Findings log (append-only, newest last)
+
+## E01 (results/e01) — synthetic demand panel, 4 teachers, 2 surrogate engines, SR-on-labels control
+Setup: 40 series x 84 usable months; train t<60, test t>=78 (future), "ex" = 20 unseen series with level 1.5-2x higher (extrapolation). Oracle (true fn) R2 = 0.994 / 0.997.
+F1. **Fusion works** (H3 supported): g(T(raw)) evaluated on raw columns equals g(z) composed with numeric T (max abs diff 1.5e-6; tests show 1e-9 for pure T). Fused formula runs 0.44 ms vs XGB 19 ms for 720 rows (~44x) with no ML dependency.
+F2. **Transformation cost is non-trivial**: g has 187 nodes, fused F has 685 (T contributes ~3.6x). Supports a joint T+g complexity metric (candidate novelty). Fused expr also contains float noise like `+1.7e-20` from standardised sin() -> needs a clean-up/chop pass.
+F3. **Extrapolation (H1 strongly supported)**: XGB/LGBM teacher R2 on out-of-range levels = 0.64 (RMSE 24) vs oracle 0.997; its best sparse symbolic surrogate (52 nodes vs 11,694 tree nodes) reaches 0.997 (RMSE 2.07). Trees saturate; equations extrapolate. MLP teacher also degrades (0.51) while its GP/sparse surrogates reach 0.97-0.99.
+F4. **Fidelity != accuracy off-support**: the extrapolating surrogate has fidelity-R2 to the teacher of only 0.1-0.2 on "ex" — it is *better* than the teacher exactly where it disagrees with it. Fidelity-to-teacher is therefore the wrong objective outside the training support. Conceptual finding: what should a surrogate be faithful to? (-> new RQ8)
+F5. **H2 NOT supported on this data**: sparse regression on raw labels (0.994 te / 0.997 ex at 44 nodes) matches distillation. Reason: truth lies inside the term library, noise is low (sd 2) and n is large. Distillation's advantage, if any, must be searched in low-n / high-noise / mis-specified-library regimes (-> E02).
+F6. **METHOD BUG/WEAKNESS (mine)**: sparse path is erratic (te R2 0.46 at 133 nodes, MLP teacher -9.4). Cause: OLS "debias" on near-collinear library columns (roll3 = mean(l1,l2,l3); sin/cos pairs) -> exploding coefficients. Not a property of the idea; fix with ridge-debias/STLSQ + collinear pruning before drawing conclusions about sparse method.
+F7. GP (gplearn) is noisy but yields very compact formulas (5-30 nodes, te R2 0.96-0.99 for lgbm/mlp teachers); fidelity 0.92-0.95. Augmented queries helped MLP teacher GP in extrapolation (0.97->0.99) but hurt xgb GP (0.98->0.27/0.74) -> high variance, needs multiple seeds.
+Caveats: single seed; truth is inside the library (optimistic); synthetic only; no real data yet.

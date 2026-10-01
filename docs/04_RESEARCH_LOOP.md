@@ -10,3 +10,8 @@ Format: Round N | Question | Method | Result | Conclusion | Next hypotheses
 
 ## Round 0 (literature) — done, see 01_LITERATURE.md
 Stage 1 established; fusion + joint complexity + temporal extrapolation = candidate gap.
+
+## Round 1 (E01) — see findings F1–F7
+Result: H1 strong yes, H3 yes, H2 no (on easy data). New: fidelity-vs-accuracy off-support is the central conceptual issue (RQ8).
+Next: (E02) repair sparse engine; vary noise/n/library mis-specification to find when distillation beats label-SR (H2) and when symbolic collapses (H4);
+add multi-seed. (E03) real public datasets + mis-specified truth. (E04) taxonomy of preprocessing expressibility (H5).
