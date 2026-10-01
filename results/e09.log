@@ -1,0 +1,52 @@
+newton_grav done
+kinetic done
+ideal_gas done
+pendulum done
+lens done
+relativistic done
+gauss done
+damped_osc done
+snell_ratio done
+                                      nodes  in_r2  ex_r2  fid_in  fid_ex
+law          method                                                      
+damped_osc   gp-raw[teacher_queries]    4.0  0.771  0.681   0.774   0.338
+             gp-z[teacher_queries]     18.0  0.860 -7.307   0.868  -3.085
+             mlp_teacher                NaN  0.998  0.408   1.000   1.000
+gauss        gp-log[teacher_queries]    5.0  0.547 -0.007   0.563   0.269
+             gp-raw[teacher_queries]    5.0  0.596  0.072   0.612   0.338
+             gp-z[teacher_queries]      7.0  0.662  0.174   0.677   0.419
+             mlp_teacher                NaN  0.997  0.935   1.000   1.000
+ideal_gas    gp-log[teacher_queries]    6.0  1.000  1.000   0.996   0.911
+             gp-raw[teacher_queries]    6.0  1.000  1.000   0.996   0.911
+             gp-z[teacher_queries]      7.0  0.669  0.550   0.681   0.672
+             mlp_teacher                NaN  0.996  0.938   1.000   1.000
+kinetic      gp-log[teacher_queries]    6.0  0.998  0.998   0.998   0.534
+             gp-raw[teacher_queries]    6.0  1.000  1.000   0.999   0.479
+             gp-z[teacher_queries]     49.0  0.994  0.908   0.996   0.896
+             mlp_teacher                NaN  0.999  0.776   1.000   1.000
+lens         gp-log[teacher_queries]   22.0  0.923  0.578   0.923   0.125
+             gp-raw[teacher_queries]    8.0  1.000  1.000   0.998   0.955
+             gp-z[teacher_queries]     21.0  0.922  0.886   0.922   0.871
+             mlp_teacher                NaN  0.998  0.966   1.000   1.000
+newton_grav  gp-log[teacher_queries]    6.0  1.000  1.000   0.996   0.943
+             gp-raw[teacher_queries]    6.0  1.000  1.000   0.996   0.943
+             gp-z[teacher_queries]     50.0  0.806  0.725   0.825   0.808
+             mlp_teacher                NaN  0.996  0.957   1.000   1.000
+pendulum     gp-log[teacher_queries]    8.0  0.999  0.999   0.997   0.990
+             gp-raw[teacher_queries]   10.0  1.000  1.000   0.998   0.992
+             gp-z[teacher_queries]     27.0  0.984  0.855   0.987   0.857
+             mlp_teacher                NaN  0.998  0.992   1.000   1.000
+relativistic gp-log[teacher_queries]    3.0  0.938  0.407   0.938   0.860
+             gp-raw[teacher_queries]    8.0  0.988  0.590   0.989   0.972
+             gp-z[teacher_queries]     17.0  0.963  0.497   0.965   0.964
+             mlp_teacher                NaN  0.998  0.596   1.000   1.000
+snell_ratio  gp-log[teacher_queries]   20.0  0.998  0.968   0.996   0.886
+             gp-raw[teacher_queries]   11.0  0.782  0.565   0.784   0.652
+             gp-z[teacher_queries]     10.0  0.620  0.185   0.625   0.218
+             mlp_teacher                NaN  0.998  0.962   1.000   1.000
+                         in_r2  ex_r2  fid_in  fid_ex
+method                                               
+gp-log[teacher_queries]  0.998  0.983   0.996   0.873
+gp-raw[teacher_queries]  1.000  1.000   0.996   0.911
+gp-z[teacher_queries]    0.860  0.550   0.868   0.808
+mlp_teacher              0.998  0.938   1.000   1.000
