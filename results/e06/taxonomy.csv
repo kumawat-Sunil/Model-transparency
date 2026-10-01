@@ -1,0 +1,6 @@
+step,n_out,nodes,max_abs_err,closed_form
+PCA,4,80,1.7763568394002505e-15,True
+Polynomial(2),9,21,0.0,True
+Quantile(n=10),6,510,1.1102230246251565e-16,False
+Quantile(n=50),6,2670,1.1102230246251565e-16,False
+Quantile(n=200),6,10770,1.6653345369377348e-16,False
