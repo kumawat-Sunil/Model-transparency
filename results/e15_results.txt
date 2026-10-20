@@ -1,0 +1,52 @@
+
+################ GRAVITY  (MLP)
+PREPROCESSING T: {'m1': 'm1', 'm2': 'm2', 'r': 'r'}
+search chosen (representation, max_len, held-out fidelity): ('raw', 10, np.float64(0.9959638960066723))
+FUNCTION g(features):  y = 1.0062*m1*m2/(r**2*cos(0.139706*r)) - 0.10743
+FULL FORMULA on RAW:   y = 1.0062*m1*m2/(r**2*cos(0.139706*r)) - 0.10743
+test score  model=0.9941   formula=0.9993   agreement formula-vs-model R2=0.9953
+         raw_input  model  formula  truth
+ [1.9, 1.67, 4.77] -0.039    0.071  0.139
+[3.41, 2.81, 2.71]  1.361    1.304  1.304
+[4.64, 1.94, 1.89]  2.443    2.535  2.535
+ [3.84, 2.42, 3.3]  0.852    0.854  0.856
+ [1.91, 4.71, 4.3]  0.388    0.485  0.486
+
+################ DIABETES (MLP)
+PREPROCESSING T: {'age': 'age', 'sex': 'sex', 'bmi': 'bmi', 'bp': 'bp', 's1': 's1', 's2': 's2', 's3': 's3', 's4': 's4', 's5': 's5', 's6': 's6'}
+search chosen (representation, max_len, held-out fidelity): ('raw', 20, np.float64(0.9344622429030623))
+FUNCTION g(features):  y = 0.19363*s5*(-0.38597*bmi*sex + 2.0391*bmi + 0.46399*bp + 0.13175*s2)*log(9.54240535828342*s5*(1.298231*bmi + 1.992501*s4)/s1) - 55.4
+FULL FORMULA on RAW:   y = 0.19363*s5*(-0.38597*bmi*sex + 2.0391*bmi + 0.46399*bp + 0.13175*s2)*log(9.54240535828342*s5*(1.298231*bmi + 1.992501*s4)/s1) - 55.4
+test score  model=0.4576   formula=0.4733   agreement formula-vs-model R2=0.9156
+                                                      raw_input   model  formula  truth
+[48.0, 1.0, 31.4, 75.33, 242.0, 151.6, 38.0, 6.37, 5.57, 103.0] 225.042  228.281  192.0
+    [35.0, 1.0, 21.1, 82.0, 156.0, 87.8, 50.0, 3.0, 4.51, 95.0] 125.190  108.446   68.0
+   [49.0, 2.0, 28.8, 92.0, 207.0, 140.0, 44.0, 5.0, 4.74, 92.0] 156.742  154.279  196.0
+   [49.0, 2.0, 25.8, 89.0, 182.0, 118.6, 39.0, 5.0, 4.8, 115.0] 153.637  144.073  262.0
+  [43.0, 1.0, 34.3, 84.0, 256.0, 172.6, 33.0, 8.0, 5.53, 104.0] 239.488  264.451  306.0
+
+################ AIRLINE forecast (XGBoost)
+PREPROCESSING T: {'l1': 'l1', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l2': 'log(l2)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+search chosen (representation, max_len, held-out fidelity): ('raw', 15, np.float64(0.9642384074698549))
+FUNCTION g(features):  y = -7.4742 + 1.4966*(-0.074388*cos_m*l12 + 0.10908*l1*log_l2 + 0.15561*l12*log_l1 + 2.6722*l12)/log_l12
+FULL FORMULA on RAW:   y = 1.4966*(0.10908*l1*log(l2) + 0.15561*l12*log(l1) - 0.074388*l12*cos(pi*month/6) + 2.6722*l12)/log(l12) - 7.4742
+test score  model=0.3803   formula=0.8746   agreement formula-vs-model R2=0.3921
+                 raw_input      model  formula  truth
+[337.0, 310.0, 340.0, 1.0] 340.847992  353.377  360.0
+[360.0, 337.0, 318.0, 2.0] 329.743011  345.177  342.0
+[342.0, 360.0, 362.0, 3.0] 361.954010  377.518  406.0
+[406.0, 342.0, 348.0, 4.0] 355.997986  382.908  396.0
+[396.0, 406.0, 363.0, 5.0] 374.489990  396.409  420.0
+
+################ TITANIC survival probability (MLP)
+PREPROCESSING T: {'pclass': 'pclass', 'sex': 'sex', 'age': 'age', 'sibsp': 'sibsp', 'log_fare': 'log(fare + 1)'}
+search chosen (representation, max_len, held-out fidelity): ('raw', 20, np.float64(0.8696549920541153))
+FUNCTION g(features):  y = -0.047732*age + 0.74641*sex - 0.35429*sibsp + 0.16691*sin(2.156919*log_fare) + 0.16691*sin(1.442695*pclass) - 0.16691*sin(2.718282*pclass) - 0.28034 + 1.4629*exp(1.196938*sex)/pclass
+FULL FORMULA on RAW:   y = 1/(1.3236*exp(0.04773153867*age - 0.746406129591*sex + 0.3542852886*sibsp - 0.166911*sin(1.442695*pclass) + 0.166911*sin(2.718282*pclass) - 0.166911*sin(2.156919*log(fare + 1)) - 1.46289966344131*exp(1.196938*sex)/pclass) + 1.0)
+test score  model=0.8830   formula=0.8754   agreement formula-vs-model R2=0.9032
+                  raw_input  model  formula  truth
+[3.0, 1.0, 6.0, 4.0, 31.28]  0.102    0.554      0
+[1.0, 1.0, 19.0, 0.0, 30.0]  0.984    0.991      1
+[1.0, 0.0, 70.0, 1.0, 71.0]  0.309    0.084      0
+ [3.0, 1.0, 9.0, 3.0, 27.9]  0.201    0.601      0
+[3.0, 0.0, 30.0, 0.0, 7.22]  0.079    0.154      0

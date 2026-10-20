@@ -1,0 +1,21 @@
+trial,task,model_score,formula_score,fidelity,nodes,secs,extrap_r2,note
+t01_operon_multirep,gravity,0.9941164246097124,0.9993196530220113,0.9952756143754389,15,17.5,0.9981388294525423,baseline multi-representation Operon
+t01_operon_multirep,diabetes,0.4368283670437553,0.4351614584940656,0.9319366545734102,39,16.8,,baseline multi-representation Operon
+t01_operon_multirep,airline,0.3802712086810286,0.8703983561941778,0.3939258380680417,31,8.0,,baseline multi-representation Operon
+t01_operon_multirep,titanic,0.8618316041500399,0.8642258579409416,0.926166300677279,32,8.5,,baseline multi-representation Operon
+t02_prune_refit,gravity,0.9941164246097124,0.9994146287379718,0.9947690880169987,11,53.6,0.9994119008882186,3 seeds + greedy prune (tol .003) + LSQ constant refit + 4-sig-fig rounding
+t02_prune_refit,diabetes,0.4368283670437553,0.4325398245294081,0.9293046646593941,34,51.6,,3 seeds + greedy prune (tol .003) + LSQ constant refit + 4-sig-fig rounding
+t02_prune_refit,airline,0.3802712086810286,0.2996935454625421,0.751165089591653,13,27.1,,3 seeds + greedy prune (tol .003) + LSQ constant refit + 4-sig-fig rounding
+t02_prune_refit,titanic,0.8618316041500399,0.8624800478850758,0.9157687363749648,28,27.7,,3 seeds + greedy prune (tol .003) + LSQ constant refit + 4-sig-fig rounding
+t03_snap_safe,gravity,0.9941164246097124,0.999673898611856,0.9947766476389857,12,41.1,0.9996375627762815,"full+safe opsets, min(holdout,edge) selection, prune, snap to k/2"
+t03_snap_safe,diabetes,0.4368283670437553,0.46710291436115736,0.9315074737703157,26,38.1,,"full+safe opsets, min(holdout,edge) selection, prune, snap to k/2"
+t03_snap_safe,airline,0.3802712086810286,0.30257845021755114,0.7491132095460238,13,18.9,,"full+safe opsets, min(holdout,edge) selection, prune, snap to k/2"
+t03_snap_safe,titanic,0.8618316041500399,0.8561203112529929,0.9102166298641965,32,18.6,,"full+safe opsets, min(holdout,edge) selection, prune, snap to k/2"
+t04_structure_rules,gravity,0.9941164246097124,1.0,0.9943763365188572,6,41.4,1.0,t03 + periodic-feature rule (safe ops) + deep Add-term pruning
+t04_structure_rules,diabetes,0.4368283670437553,0.46710291436115736,0.9315074737703157,26,37.3,,t03 + periodic-feature rule (safe ops) + deep Add-term pruning
+t04_structure_rules,airline,0.3802712086810286,0.8366985765592626,0.4503227767165038,8,16.9,,t03 + periodic-feature rule (safe ops) + deep Add-term pruning
+t04_structure_rules,titanic,0.8618316041500399,0.8508828810853948,0.8840164350056352,29,20.1,,t03 + periodic-feature rule (safe ops) + deep Add-term pruning
+t05_binary_guard_export,gravity,0.9941164246097124,1.0,0.9943763365188572,6,40.8,1.0,t04 + binary linearisation + domain guard + standalone numpy export
+t05_binary_guard_export,diabetes,0.4368283670437553,0.46710291436115736,0.9315074737703157,26,37.6,,t04 + binary linearisation + domain guard + standalone numpy export
+t05_binary_guard_export,airline,0.3802712086810286,0.8366985765592626,0.4503227767165038,8,17.1,,t04 + binary linearisation + domain guard + standalone numpy export
+t05_binary_guard_export,titanic,0.8618316041500399,0.8508330007980845,0.884023094143214,26,19.0,,t04 + binary linearisation + domain guard + standalone numpy export

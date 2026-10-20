@@ -1,0 +1,26 @@
+t03_snap_safe  2026-10-01 08:52:40.613889  full+safe opsets, min(holdout,edge) selection, prune, snap to k/2
+
+#### t03_snap_safe | gravity
+PREPROCESSING: {'m1': 'm1', 'm2': 'm2', 'r': 'r'}
+choice: ('safe', 'raw', 10, 1, 'final score=0.9899')
+FORMULA (raw inputs): y = 1.5*m1*m2*(0.014795*r + 0.65036)/r**2
+model_score=0.9941  formula_score=0.9997  fidelity=0.9948  nodes=12  secs=41.1000  extrap_r2=0.9996
+truth: m1*m2/r**2
+
+#### t03_snap_safe | diabetes
+PREPROCESSING: {'age': 'age', 'sex': 'sex', 'bmi': 'bmi', 'bp': 'bp', 's1': 's1', 's2': 's2', 's3': 's3', 's4': 's4', 's5': 's5', 's6': 's6'}
+choice: ('full', 'raw', 20, 0, 'final score=0.9328')
+FORMULA (raw inputs): y = 1.2263*bmi*s5 + 1.1997*bp - 0.6334*s1 + 0.47282*s2 + 5.3602*s4 + 1.7304*s5**2 - 21.547*sex - 73.0
+model_score=0.4368  formula_score=0.4671  fidelity=0.9315  nodes=26  secs=38.1000
+
+#### t03_snap_safe | airline
+PREPROCESSING: {'l1': 'l1', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l2': 'log(l2)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+choice: ('full', 'raw', 10, 1, 'final score=0.9627')
+FORMULA (raw inputs): y = 55.103*log(l1) - 145.5*sin(sin(1.673*log(l12)))
+model_score=0.3803  formula_score=0.3026  fidelity=0.7491  nodes=13  secs=18.9000
+
+#### t03_snap_safe | titanic
+PREPROCESSING: {'pclass': 'pclass', 'sex': 'sex', 'age': 'age', 'sibsp': 'sibsp', 'log_fare': 'log(fare + 1)'}
+choice: ('full', 'raw', 20, 1, 'final score=0.8960')
+FORMULA (raw inputs): y = 1/(0.33835*exp(0.03778*sqrt(pclass)*(1.255*age + 4.117*pclass*sibsp + 2.559*pclass - 104*sin(1.529*sex)/pclass)) + 1.0)
+model_score=0.8618  formula_score=0.8561  fidelity=0.9102  nodes=32  secs=18.6000

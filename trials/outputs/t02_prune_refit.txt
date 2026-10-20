@@ -1,0 +1,26 @@
+t02_prune_refit  2026-10-01 08:50:14.380877  3 seeds + greedy prune (tol .003) + LSQ constant refit + 4-sig-fig rounding
+
+#### t02_prune_refit | gravity
+PREPROCESSING: {'m1': 'm1', 'm2': 'm2', 'r': 'r'}
+choice: ('log-inputs', 10, np.float64(0.9969476710994652), 'after-prune fid=0.9949')
+FORMULA (raw inputs): y = 0.9833*m1**1.0022*m2**0.99544/r**1.9354
+model_score=0.9941  formula_score=0.9994  fidelity=0.9948  nodes=11  secs=53.6000  extrap_r2=0.9994
+truth: m1*m2/r**2
+
+#### t02_prune_refit | diabetes
+PREPROCESSING: {'age': 'age', 'sex': 'sex', 'bmi': 'bmi', 'bp': 'bp', 's1': 's1', 's2': 's2', 's3': 's3', 's4': 's4', 's5': 's5', 's6': 's6'}
+choice: ('log-inputs', 20, np.float64(0.9457788759250718), 'after-prune fid=0.9435')
+FORMULA (raw inputs): y = -618.98*sex**0.048958 + 9.1958*(-0.8588*log(s1) + 1.6656*log(s5) + 5.6891)*log(bmi)*log(bp) + 50.532*log(s2) + 97.424*log(s4)/log(s3)
+model_score=0.4368  formula_score=0.4325  fidelity=0.9293  nodes=34  secs=51.6000
+
+#### t02_prune_refit | airline
+PREPROCESSING: {'l1': 'l1', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l2': 'log(l2)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+choice: ('raw', 10, np.float64(0.9731510865718468), 'after-prune fid=0.9694')
+FORMULA (raw inputs): y = 55.132*log(l1) - 145.58*sin(sin(1.672*log(l12)))
+model_score=0.3803  formula_score=0.2997  fidelity=0.7512  nodes=13  secs=27.1000
+
+#### t02_prune_refit | titanic
+PREPROCESSING: {'pclass': 'pclass', 'sex': 'sex', 'age': 'age', 'sibsp': 'sibsp', 'log_fare': 'log(fare + 1)'}
+choice: ('raw', 20, np.float64(0.9270414193310168), 'after-prune fid=0.9215')
+FORMULA (raw inputs): y = 1/(0.61358*exp(0.0292*age*pclass + 0.07182*sqrt(pclass)*sibsp**2 - 3.909*sex**2/sqrt(pclass)) + 1.0)
+model_score=0.8618  formula_score=0.8625  fidelity=0.9158  nodes=28  secs=27.7000

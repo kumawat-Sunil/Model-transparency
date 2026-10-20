@@ -1,0 +1,26 @@
+t05_binary_guard_export  2026-10-01 08:57:19.694680  t04 + binary linearisation + domain guard + standalone numpy export
+
+#### t05_binary_guard_export | gravity
+PREPROCESSING: {'m1': 'm1', 'm2': 'm2', 'r': 'r'}
+choice: ('safe', 'raw', 10, 1, 'final score=0.9925')
+FORMULA (raw inputs): y = m1*m2/r**2
+model_score=0.9941  formula_score=1.0000  fidelity=0.9944  nodes=6  secs=40.8000  extrap_r2=1.0000
+truth: m1*m2/r**2
+
+#### t05_binary_guard_export | diabetes
+PREPROCESSING: {'age': 'age', 'sex': 'sex', 'bmi': 'bmi', 'bp': 'bp', 's1': 's1', 's2': 's2', 's3': 's3', 's4': 's4', 's5': 's5', 's6': 's6'}
+choice: ('full', 'raw', 20, 0, 'final score=0.9328')
+FORMULA (raw inputs): y = 1.2263*bmi*s5 + 1.1997*bp - 0.6334*s1 + 0.47282*s2 + 5.3602*s4 + 1.7304*s5**2 - 21.547*sex - 73.0
+model_score=0.4368  formula_score=0.4671  fidelity=0.9315  nodes=26  secs=37.6000
+
+#### t05_binary_guard_export | airline
+PREPROCESSING: {'l1': 'l1', 'l12': 'l12', 'log_l1': 'log(l1)', 'log_l2': 'log(l2)', 'log_l12': 'log(l12)', 'sin_m': 'sin(pi*month/6)', 'cos_m': 'cos(pi*month/6)'}
+choice: ('full', 'raw', 10, 0, 'final score=0.9570', 'periodic-rule: SAFE ops only')
+FORMULA (raw inputs): y = 0.20616*l1 + 0.75507*l12 + 30.5
+model_score=0.3803  formula_score=0.8367  fidelity=0.4503  nodes=8  secs=17.1000
+
+#### t05_binary_guard_export | titanic
+PREPROCESSING: {'pclass': 'pclass', 'sex': 'sex', 'age': 'age', 'sibsp': 'sibsp', 'log_fare': 'log(fare + 1)'}
+choice: ('full', 'raw', 20, 1, 'final score=0.8954', 'binary-linearised [sex]')
+FORMULA (raw inputs): y = 1/(exp(0.03825*sqrt(pclass)*(1.384*age + 4.256*pclass*sibsp - 103.2*sex/pclass) - 1) + 1.0)
+model_score=0.8618  formula_score=0.8508  fidelity=0.8840  nodes=26  secs=19.0000
