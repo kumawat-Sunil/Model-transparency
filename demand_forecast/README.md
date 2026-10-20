@@ -1,6 +1,6 @@
 # Demand forecast → model → formula → prediction
 
-Data: Kaggle "Store Item Demand Forecasting Challenge" (10 stores × 50 items, daily 2013-2017), read from one fixed public copy (`data.py`).
+Data: Kaggle "Store Item Demand Forecasting Challenge" (10 stores × 50 items, daily 2013-2017), stored in `data/` (train.csv, test.csv).
 
 ```
 pip install -r requirements.txt
@@ -12,7 +12,8 @@ Run from this folder, in this order.
 
 | file | purpose |
 |---|---|
-| data.py | loads train/test from the fixed source |
+| data/ | train.csv (913k rows), test.csv (45k rows) |
+| data.py | loads data/train.csv and data/test.csv |
 | preprocess.py | raw sales history → 5 inputs (lvl365 = last-year level ending 91 days back, lag_364, lag_728, dow, month) → features (logs, day/month flags); one definition shared by all stages |
 | stage1_train_model.py | Stage 1: trains the model, shows its predictions |
 | stage2_symbolic_regression.py | Stage 2: symbolic regression on the model's outputs → the formula |
