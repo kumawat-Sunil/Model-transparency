@@ -4,9 +4,9 @@ Data: Kaggle "Store Item Demand Forecasting Challenge" (10 stores × 50 items, d
 
 ```
 pip install -r requirements.txt
-python stage1_train_model.py            # train LightGBM, predict          -> model.txt
-python stage2_symbolic_regression.py    # model -> symbolic regression     -> formula.txt, formula.py
-python stage3_predict_with_formula.py   # preprocess input -> formula      -> forecast_2018Q1.csv
+python stage1_train_model.py            # train LightGBM, predict          -> output/model.txt
+python stage2_symbolic_regression.py    # model -> symbolic regression     -> output/formula.txt, output/formula.py
+python stage3_predict_with_formula.py   # preprocess input -> formula      -> output/forecast_2018Q1.csv
 ```
 Run from this folder, in this order.
 
@@ -18,7 +18,7 @@ Run from this folder, in this order.
 | stage1_train_model.py | Stage 1: trains the model, shows its predictions |
 | stage2_symbolic_regression.py | Stage 2: symbolic regression on the model's outputs → the formula |
 | stage3_predict_with_formula.py | Stage 3: preprocesses input data and predicts with the formula only |
-| model.txt, formula.txt, formula.py, forecast_2018Q1.csv | generated outputs |
+| output/ | generated outputs: model.txt (stage 1), formula.txt + formula.py (stage 2), forecast_2018Q1.csv (stage 3) |
 
 ## Results (2017 Q1, 45,000 rows; SMAPE, lower is better)
 | | SMAPE |
